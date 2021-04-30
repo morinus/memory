@@ -1,5 +1,6 @@
 #include "Game.h"
 
+using namespace MemoryGame;
 
 Game::Game()
 {

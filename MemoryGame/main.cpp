@@ -5,7 +5,7 @@
 
 int main()
 {
-	Game game;
+	MemoryGame::Game game;
 
 	while (game.GetWindowIsOpen())
 	{

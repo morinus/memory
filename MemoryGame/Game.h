@@ -1,20 +1,22 @@
 #include <SFML/Graphics.hpp>
 
-
-class Game
+namespace MemoryGame
 {
-public:
-	void PoolEvents();
-	void Render();
+	class Game
+	{
+	public:
+		void PoolEvents();
+		void Render();
 
-	const bool GetWindowIsOpen();
+		const bool GetWindowIsOpen();
 
-	Game();
-	~Game();
+		Game();
+		~Game();
 
 
-private:
-	void InitWindow();
+	private:
+		void InitWindow();
 
-	sf::RenderWindow* _window;
-};
+		sf::RenderWindow* _window;
+	};
+}
