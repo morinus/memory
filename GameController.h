@@ -1,8 +1,12 @@
 #include <SFML/Graphics.hpp>
 
+#define WINDOW_HEIGHT 600
+#define WINDOW_WIDTH 800
+#define WINDOW_TITLE "Memory Game"
+
 namespace MemoryGame
 {
-	class Game
+	class GameController
 	{
 	public:
 		void PoolEvents();
@@ -10,8 +14,8 @@ namespace MemoryGame
 
 		const bool GetWindowIsOpen();
 
-		Game();
-		~Game();
+		GameController();
+		~GameController();
 
 
 	private:

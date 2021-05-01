@@ -1,17 +1,17 @@
 #include <iostream>
 
-#include "Game.h"
+#include "GameController.h"
 
 
 int main()
 {
-	MemoryGame::Game game;
+	MemoryGame::GameController gameController;
 
-	while (game.GetWindowIsOpen())
+	while (gameController.GetWindowIsOpen())
 	{
-		game.PoolEvents();
+		gameController.PoolEvents();
 
-		game.Render();
+		gameController.Render();
 	}
 
 	return 0;

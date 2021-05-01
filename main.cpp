@@ -1,21 +1,17 @@
 #include <iostream>
-#include <SFML/Graphics.hpp>
+
+#include "GameController.h"
+
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Memory Game");
+	MemoryGame::GameController gameController;
 
-	while (window.isOpen())
+	while (gameController.GetWindowIsOpen())
 	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
+		gameController.PoolEvents();
 
-		window.clear();
-		window.display();
+		gameController.Render();
 	}
 
 	return 0;
