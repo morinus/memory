@@ -1,5 +1,7 @@
 #include <SFML/Graphics.hpp>
 
+#include "BoardController.h"
+
 
 namespace MemoryGame
 {
@@ -17,6 +19,8 @@ namespace MemoryGame
 
 	private:
 		void InitWindow();
+
+		BoardController _boardController;
 
 		sf::RenderWindow* _window;
 	};
