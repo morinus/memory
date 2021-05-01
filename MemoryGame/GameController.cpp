@@ -17,7 +17,7 @@ MemoryGame::GameController::~GameController()
 
 void MemoryGame::GameController::InitWindow()
 {
-	this->_window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_WIDTH), WINDOW_TITLE);
+	this->_window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
 }
 
 void MemoryGame::GameController::Render()
