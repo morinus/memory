@@ -1,3 +1,6 @@
+#include "SFML/Graphics.hpp"
+
+
 namespace MemoryGame
 {
 	class BoardView
@@ -6,7 +9,14 @@ namespace MemoryGame
 		BoardView();
 		~BoardView();
 
-	private:
+		void Init(sf::RenderWindow* window);
 
+		void Render();
+
+	private:
+		sf::RenderWindow* _window;
+		sf::Image _backgroundImage;
+
+		void InitBoardTexture();
 	};
 }

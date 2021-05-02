@@ -16,12 +16,12 @@ namespace MemoryGame
 		GameController();
 		~GameController();
 
-
 	private:
-		void InitWindow();
-
 		BoardController _boardController;
 
 		sf::RenderWindow* _window;
+
+		void InitWindow();
+
 	};
 }

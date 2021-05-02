@@ -4,6 +4,7 @@ namespace MemoryGame
 	{
 	public:
 		void InitBoard(int numberOfPlayers, int numberOfCardPairs);
+		void Render();
 
 		BoardController();
 		~BoardController();
