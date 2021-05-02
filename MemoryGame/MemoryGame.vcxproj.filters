@@ -48,13 +48,13 @@
     <ClCompile Include="BoardView.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerModel.cpp">
-      <Filter>Source Files\Model</Filter>
-    </ClCompile>
     <ClCompile Include="Card.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
-    <ClCompile Include="CardType.cpp">
+    <ClCompile Include="CardType.h">
+      <Filter>Header Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
   </ItemGroup>
@@ -68,10 +68,10 @@
     <ClInclude Include="BoardView.h">
       <Filter>Header Files\Views</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerModel.h">
+    <ClInclude Include="Card.h">
       <Filter>Header Files\Model</Filter>
     </ClInclude>
-    <ClInclude Include="Card.h">
+    <ClInclude Include="Player.h">
       <Filter>Header Files\Model</Filter>
     </ClInclude>
   </ItemGroup>

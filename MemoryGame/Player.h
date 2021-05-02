@@ -3,11 +3,11 @@
 
 namespace MemoryGame
 {
-	class PlayerModel
+	class Player
 	{
 	public:
-		PlayerModel(std::string name);
-		~PlayerModel();
+		Player(std::string name);
+		~Player();
 
 		const int GetScore();
 		void SetScore(int newScore);
