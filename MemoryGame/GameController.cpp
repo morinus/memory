@@ -8,6 +8,7 @@ constexpr auto WINDOW_TITLE = "Memory Game";
 MemoryGame::GameController::GameController()
 {
 	this->InitWindow();
+	this->_boardController.Init(this->_window);
 }
 
 MemoryGame::GameController::~GameController()
@@ -24,7 +25,7 @@ void MemoryGame::GameController::Render()
 {
 	this->_window->clear();
 
-	// Render
+	this->_boardController.Render();
 
 	this->_window->display();
 }

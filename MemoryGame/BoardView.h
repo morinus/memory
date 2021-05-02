@@ -15,8 +15,9 @@ namespace MemoryGame
 
 	private:
 		sf::RenderWindow* _window;
-		sf::Image _backgroundImage;
+		sf::Texture _backgroundTexture;
+		sf::Sprite _backgroundImage;
 
-		void InitBoardTexture();
+		void InitBoardBackground();
 	};
 }

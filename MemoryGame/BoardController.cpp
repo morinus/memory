@@ -11,6 +11,11 @@ MemoryGame::BoardController::~BoardController()
 
 }
 
+void MemoryGame::BoardController::Init(sf::RenderWindow* window)
+{
+	this->_boardView.Init(window);
+}
+
 void MemoryGame::BoardController::InitBoard(int numberOfPlayers, int numberOfCardPairs)
 {
 	this->numberOfPlayers = numberOfPlayers;
@@ -19,5 +24,5 @@ void MemoryGame::BoardController::InitBoard(int numberOfPlayers, int numberOfCar
 
 void MemoryGame::BoardController::Render()
 {
-
+	this->_boardView.Render();
 }

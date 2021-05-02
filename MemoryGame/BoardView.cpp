@@ -15,21 +15,20 @@ void MemoryGame::BoardView::Init(sf::RenderWindow* window)
 {
 	this->_window = window;
 
-	this->InitBoardTexture();
+	this->InitBoardBackground();
 }
 
-void MemoryGame::BoardView::InitBoardTexture()
+void MemoryGame::BoardView::InitBoardBackground()
 {
-	sf::Texture texture;
-	if (!texture.loadFromFile("Images/background.jpg"))
+	if (!_backgroundTexture.loadFromFile("../Images/background.jpg"))
 	{
 		// error
 	}
 
-
+	_backgroundImage = sf::Sprite(_backgroundTexture);
 }
 
 void MemoryGame::BoardView::Render()
 {
-
+	this->_window->draw(_backgroundImage);
 }
