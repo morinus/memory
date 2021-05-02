@@ -15,6 +15,4 @@ void MemoryGame::BoardController::InitBoard(int numberOfPlayers, int numberOfCar
 {
 	this->numberOfPlayers = numberOfPlayers;
 	this->numberOfCardPairs = numberOfCardPairs;
-
-	// Init BoardView
 }

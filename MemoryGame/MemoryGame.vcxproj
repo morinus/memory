@@ -127,13 +127,18 @@
   <ItemGroup>
     <ClCompile Include="BoardController.cpp" />
     <ClCompile Include="BoardView.cpp" />
+    <ClCompile Include="Card.cpp" />
+    <ClCompile Include="CardType.cpp" />
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PlayerModel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoardController.h" />
     <ClInclude Include="BoardView.h" />
+    <ClInclude Include="Card.h" />
     <ClInclude Include="GameController.h" />
+    <ClInclude Include="PlayerModel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
