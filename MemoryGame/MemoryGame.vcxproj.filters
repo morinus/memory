@@ -31,16 +31,10 @@
     <Filter Include="Header Files\Model">
       <UniqueIdentifier>{6b2b9b66-69e8-4876-9536-6f6d7e7ba35f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Interfaces">
-      <UniqueIdentifier>{42bff44e-6e73-432a-a6fa-49b2be176b76}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameController.cpp">
-      <Filter>Source Files\Controllers</Filter>
     </ClCompile>
     <ClCompile Include="BoardController.cpp">
       <Filter>Source Files\Controllers</Filter>
@@ -57,11 +51,17 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
+    <ClCompile Include="MenuView.h">
+      <Filter>Header Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameController.h">
-      <Filter>Header Files\Controllers</Filter>
-    </ClInclude>
     <ClInclude Include="BoardController.h">
       <Filter>Header Files\Controllers</Filter>
     </ClInclude>
@@ -73,6 +73,9 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuController.h">
+      <Filter>Header Files\Controllers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

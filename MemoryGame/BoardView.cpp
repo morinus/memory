@@ -3,7 +3,7 @@
 
 MemoryGame::BoardView::BoardView()
 {
-
+	this->Init();
 }
 
 MemoryGame::BoardView::~BoardView()
@@ -11,10 +11,8 @@ MemoryGame::BoardView::~BoardView()
 
 }
 
-void MemoryGame::BoardView::Init(sf::RenderWindow* window)
+void MemoryGame::BoardView::Init()
 {
-	this->_window = window;
-
 	this->InitBoardBackground();
 }
 
@@ -28,7 +26,7 @@ void MemoryGame::BoardView::InitBoardBackground()
 	_backgroundImage = sf::Sprite(_backgroundTexture);
 }
 
-void MemoryGame::BoardView::Render()
+void MemoryGame::BoardView::Render(sf::RenderWindow* window)
 {
-	this->_window->draw(_backgroundImage);
+	window->draw(_backgroundImage);
 }

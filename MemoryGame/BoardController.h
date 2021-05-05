@@ -6,9 +6,8 @@ namespace MemoryGame
 	class BoardController
 	{
 	public:
-		void Init(sf::RenderWindow* window);
 		void InitBoard(int numberOfPlayers, int numberOfCardPairs);
-		void Render();
+		void Render(sf::RenderWindow* window);
 
 		BoardController();
 		~BoardController();

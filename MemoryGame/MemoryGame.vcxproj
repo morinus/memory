@@ -137,15 +137,17 @@
     <ClCompile Include="BoardView.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardType.h" />
-    <ClCompile Include="GameController.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenuController.cpp" />
+    <ClCompile Include="MenuView.cpp" />
+    <ClCompile Include="MenuView.h" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoardController.h" />
     <ClInclude Include="BoardView.h" />
     <ClInclude Include="Card.h" />
-    <ClInclude Include="GameController.h" />
+    <ClInclude Include="MenuController.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

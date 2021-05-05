@@ -9,12 +9,11 @@ namespace MemoryGame
 		BoardView();
 		~BoardView();
 
-		void Init(sf::RenderWindow* window);
+		void Init();
 
-		void Render();
+		void Render(sf::RenderWindow* window);
 
 	private:
-		sf::RenderWindow* _window;
 		sf::Texture _backgroundTexture;
 		sf::Sprite _backgroundImage;
 
