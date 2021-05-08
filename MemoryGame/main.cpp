@@ -1,4 +1,5 @@
 #include "SFML/Audio.hpp"
+#include "ErrorMessageStrings.h"
 
 // Controllers
 #include "BoardController.h"
@@ -24,7 +25,7 @@ int main()
 	sf::Image icon;
 	if (!icon.loadFromFile("../Images/memory_game_icon.png"))
 	{
-		// error
+		std::cout << ERROR_LOADING_WINDOW_ICON << std::endl;
 	}
 
 	window.setIcon(icon.getSize().y, icon.getSize().x, icon.getPixelsPtr());
