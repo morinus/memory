@@ -6,7 +6,7 @@
 
 MemoryGame::SoundController::SoundController()
 {
-	if (!_backgroundMusic.openFromFile(MUSIC_FILEPATH))
+	if (!_backgroundMusic.openFromFile(BACKGROUND_MUSIC_FILEPATH))
 	{
 		std::cout << ERROR_LOADING_MUSIC_FILE << std::endl;
 	}
