@@ -1,7 +1,9 @@
-#ifndef  BOARDCONTROLLER_H
+#ifndef BOARDCONTROLLER_H
 #define BOARDCONTROLLER_H
 
 #include "BoardView.h"
+#include "LeaderboardView.h"
+
 
 namespace MemoryGame
 {
@@ -19,6 +21,7 @@ namespace MemoryGame
 		int numberOfCardPairs;
 
 		BoardView _boardView;
+		LeaderboardView _leaderboardView;
 	};
 }
 

@@ -4,6 +4,7 @@
 #include "ErrorMessageStrings.h"
 #include "ResourceLocator.h"
 
+
 MemoryGame::SoundController::SoundController()
 {
 	if (!_backgroundMusic.openFromFile(BACKGROUND_MUSIC_FILEPATH))

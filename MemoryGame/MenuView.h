@@ -3,6 +3,7 @@
 
 #include "SFML/Graphics.hpp"
 
+
 namespace MemoryGame
 {
 	class MenuView
@@ -12,9 +13,6 @@ namespace MemoryGame
 		~MenuView();
 
 		void Render(sf::RenderWindow* window);
-
-	private:
-
 
 	};
 }

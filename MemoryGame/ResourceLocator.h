@@ -4,5 +4,6 @@
 #define BACKGROUND_MUSIC_FILEPATH "../Sounds/Jorge Hernandez - Chopsticks.ogg"
 #define WINDOW_ICON_FILEPATH "../Images/memory_game_icon.png"
 #define BACKGROUND_TEXTURE_FILEPATH "../Images/background.jpg"
+#define FONT_FILEPATH "../Fonts/KGBrokenVesselsSketch.ttf"
 
 #endif // RESOURCELOCATOR_H

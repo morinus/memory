@@ -3,6 +3,7 @@
 
 #include "MenuView.h"
 
+
 namespace MemoryGame
 {
 	class MenuController
@@ -19,4 +20,4 @@ namespace MemoryGame
 	};
 }
 
-#endif // MENUVIEW_H
+#endif // MENUCONTROLLER_H

@@ -3,6 +3,7 @@
 
 #include "SFML/Graphics.hpp"
 
+
 namespace MemoryGame
 {
 	class BoardView
