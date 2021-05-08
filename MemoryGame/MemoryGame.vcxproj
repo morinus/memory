@@ -135,8 +135,8 @@
   <ItemGroup>
     <ClCompile Include="BoardController.cpp" />
     <ClCompile Include="BoardView.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Card.cpp" />
-    <ClCompile Include="CardType.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuController.cpp" />
     <ClCompile Include="MenuView.cpp" />
@@ -146,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="BoardController.h" />
     <ClInclude Include="BoardView.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="MenuController.h" />
     <ClInclude Include="Player.h" />

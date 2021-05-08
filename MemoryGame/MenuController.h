@@ -1,5 +1,5 @@
-#ifndef MENUVIEW_H
-#define MENUVIEW_H
+#ifndef MENUCONTROLLER_H
+#define MENUCONTROLLER_H
 
 #include "MenuView.h"
 
