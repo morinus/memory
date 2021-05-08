@@ -33,10 +33,10 @@ int main()
 
 	window.setIcon(icon.getSize().y, icon.getSize().x, icon.getPixelsPtr());
 
-	boardController.InitBoard(3, 1);
-
 	// Music
 	soundController.PlayMusic();
+
+	boardController.InitBoard(5, 0);
 
 	while (window.isOpen())
 	{

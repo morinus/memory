@@ -1,11 +1,12 @@
 #include <iostream>
+#include <string>
 
 #include "LeaderboardView.h"
 #include "ErrorMessageStrings.h"
 #include "ResourceLocator.h"
 
-constexpr int PLAYER_TEXT_SIZE = 24;
-constexpr int PLAYER_TEXT_OFFSET = 45;
+constexpr int PLAYER_TEXT_SIZE = 30;
+constexpr int PLAYER_TEXT_OFFSET = 55;
 constexpr int PLAYER_TEXT_OFFSET_X = 25;
 constexpr int PLAYER_TEXT_OFFSET_Y = 20;
 
@@ -37,7 +38,7 @@ void MemoryGame::LeaderboardView::InitPlayerTexts(int numberOfPlayers)
 
 		sf::Text playerText;
 		playerText.setFont(_font);
-		playerText.setString("Player");
+		playerText.setString("Player " + std::to_string(i));
 		playerText.setCharacterSize(PLAYER_TEXT_SIZE);
 		playerText.setPosition(PLAYER_TEXT_OFFSET_X, PLAYER_TEXT_OFFSET_Y);
 

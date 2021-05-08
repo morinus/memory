@@ -21,6 +21,7 @@ namespace MemoryGame
 		void SetTextPositions();
 
 		sf::Font _font;
+		sf::Text _leaderboardTitleText;
 		std::vector<sf::Text> _playerTexts;
 	};
 }
