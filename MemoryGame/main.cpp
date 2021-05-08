@@ -1,6 +1,9 @@
+#include "SFML/Audio.hpp"
+
 // Controllers
 #include "BoardController.h"
 #include "MenuController.h"
+#include "SoundController.h"
 
 // Consts
 constexpr auto WINDOW_HEIGHT = 800;
@@ -12,8 +15,13 @@ int main()
 {
 	MemoryGame::BoardController boardController;
 	MemoryGame::MenuController menuController;
+	MemoryGame::SoundController soundController;
 
+	// Render Window
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
+
+	// Music
+	//soundController.PlayMusic();
 
 	while (window.isOpen())
 	{

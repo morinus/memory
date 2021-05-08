@@ -60,6 +60,9 @@
     <ClCompile Include="Button.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
+    <ClCompile Include="SoundController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoardController.h">
@@ -79,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>Header Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundController.h">
+      <Filter>Header Files\Controllers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
