@@ -1,9 +1,19 @@
-#include "CardType.h"
+#ifndef CARD_H
+#define CARD_H
 
+#include "Button.h"
 
 namespace MemoryGame
 {
-	class Card
+	enum CardType
+	{
+		A = 1,
+		B = 2,
+		C = 3,
+		D = 4
+	};
+
+	class Card : public Button
 	{
 	public:
 		Card(CardType cardType);
@@ -16,3 +26,5 @@ namespace MemoryGame
 
 	};
 }
+
+#endif // CARD_H

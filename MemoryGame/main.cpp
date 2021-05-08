@@ -24,10 +24,15 @@ int main()
 			if (event.type == sf::Event::Closed)
 			{
 				window.close();
+
+				return 0;
 			}
 		}
 
-		// Rendering
+		// Button Update
+
+
+		// Render
 		window.clear();
 
 		boardController.Render(&window);

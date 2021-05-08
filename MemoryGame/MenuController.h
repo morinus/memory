@@ -1,5 +1,7 @@
-#include "MenuView.h"
+#ifndef MENUVIEW_H
+#define MENUVIEW_H
 
+#include "MenuView.h"
 
 namespace MemoryGame
 {
@@ -18,3 +20,5 @@ namespace MemoryGame
 		MenuView _menuView;
 	};
 }
+
+#endif // MENUVIEW_H

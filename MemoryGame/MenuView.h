@@ -1,5 +1,7 @@
-#include "SFML/Graphics.hpp"
+#ifndef MENUVIEW_H
+#define MENUVIEW_H
 
+#include "SFML/Graphics.hpp"
 
 namespace MemoryGame
 {
@@ -16,3 +18,5 @@ namespace MemoryGame
 
 	};
 }
+
+#endif // MENUVIEW_H

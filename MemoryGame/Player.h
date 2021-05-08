@@ -1,5 +1,7 @@
-#include <iostream>
+#ifndef PLAYER_H
+#define PLAYER_H
 
+#include <iostream>
 
 namespace MemoryGame
 {
@@ -20,3 +22,5 @@ namespace MemoryGame
 
 	};
 }
+
+#endif // PLAYER_H

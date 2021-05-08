@@ -1,6 +1,5 @@
 #include "BoardController.h"
 
-
 MemoryGame::BoardController::BoardController()
 {
 

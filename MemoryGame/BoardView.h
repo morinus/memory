@@ -1,5 +1,7 @@
-#include "SFML/Graphics.hpp"
+#ifndef BOARDVIEW_H
+#define BOARDVIEW_H
 
+#include "SFML/Graphics.hpp"
 
 namespace MemoryGame
 {
@@ -20,3 +22,5 @@ namespace MemoryGame
 		void InitBoardBackground();
 	};
 }
+
+#endif // BOARDVIEW_H

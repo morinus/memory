@@ -1,5 +1,7 @@
-#include "BoardView.h"
+#ifndef  BOARDCONTROLLER_H
+#define BOARDCONTROLLER_H
 
+#include "BoardView.h"
 
 namespace MemoryGame
 {
@@ -19,3 +21,5 @@ namespace MemoryGame
 		BoardView _boardView;
 	};
 }
+
+#endif // BOARDCONTROLLER.H
