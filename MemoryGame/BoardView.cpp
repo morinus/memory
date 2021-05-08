@@ -1,6 +1,7 @@
 #include <iostream>
 #include "BoardView.h"
 #include "ErrorMessageStrings.h"
+#include "ResourceLocator.h"
 
 
 MemoryGame::BoardView::BoardView()
@@ -20,7 +21,7 @@ void MemoryGame::BoardView::Init()
 
 void MemoryGame::BoardView::InitBoardBackground()
 {
-	if (!_backgroundTexture.loadFromFile("../Images/background.jpg"))
+	if (!_backgroundTexture.loadFromFile(BACKGROUND_TEXTURE_FILEPATH))
 	{
 		std::cout << ERROR_LOADING_TEXTURE << std::endl;
 	}

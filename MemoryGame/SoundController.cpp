@@ -1,10 +1,12 @@
+#include <iostream>
+
 #include "SoundController.h"
 #include "ErrorMessageStrings.h"
-#include <iostream>
+#include "ResourceLocator.h"
 
 MemoryGame::SoundController::SoundController()
 {
-	if (!_backgroundMusic.openFromFile("../Sounds/Jorge Hernandez - Chopsticks.ogg"))
+	if (!_backgroundMusic.openFromFile(MUSIC_FILEPATH))
 	{
 		std::cout << ERROR_LOADING_MUSIC_FILE << std::endl;
 	}
