@@ -11,11 +11,9 @@ namespace MemoryGame
 		MenuController();
 		~MenuController();
 
-		bool IsActive();
 		void Render(sf::RenderWindow* window);
 
 	private:
-		bool _isActive;
 
 		MenuView _menuView;
 	};

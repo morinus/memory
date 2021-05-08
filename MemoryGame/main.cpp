@@ -18,10 +18,19 @@ int main()
 	MemoryGame::SoundController soundController;
 
 	// Render Window
-	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
+	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::Close);
+
+	// Render Window Icon
+	sf::Image icon;
+	if (!icon.loadFromFile("../Images/memory_game_icon.png"))
+	{
+		// error
+	}
+
+	window.setIcon(icon.getSize().y, icon.getSize().x, icon.getPixelsPtr());
 
 	// Music
-	//soundController.PlayMusic();
+	soundController.PlayMusic();
 
 	while (window.isOpen())
 	{
