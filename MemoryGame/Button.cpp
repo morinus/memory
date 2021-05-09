@@ -22,3 +22,13 @@ void MemoryGame::Button::Update(sf::Event e)
 
 	// Check whether mouse position is inside bounds of texture image of the button
 }
+
+void MemoryGame::Button::ChangeButtonState(ButtonState newState)
+{
+	this->_state = newState;
+}
+
+void MemoryGame::Button::ResetButtonState()
+{
+	this->_state = ButtonState::NORMAL;
+}

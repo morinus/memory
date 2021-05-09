@@ -21,6 +21,8 @@ namespace MemoryGame
 
 		void Init();
 		void Update(sf::Event e);
+		void ChangeButtonState(ButtonState newState);
+		void ResetButtonState();
 
 		sf::Vector2f GetPosition() { return _position; }
 		sf::Vector2f SetPosition(sf::Vector2f newPosition) { _position = newPosition; }
