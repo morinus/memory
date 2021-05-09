@@ -8,10 +8,10 @@ namespace MemoryGame
 {
 	enum CardType
 	{
-		A = 1,
-		B = 2,
-		C = 3,
-		D = 4
+		MONSTER_A = 1,
+		MONSTER_B = 2,
+		MONSTER_C = 3,
+		MONSTER_D = 4
 	};
 
 	class Card : public Button
@@ -21,9 +21,11 @@ namespace MemoryGame
 		~Card();
 
 		CardType GetCardType();
+		bool IsFaceDown();
 
 	private:
 		CardType _cardType;
+		bool _isFaceDown;
 
 	};
 }

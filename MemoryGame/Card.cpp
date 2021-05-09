@@ -15,3 +15,8 @@ MemoryGame::CardType MemoryGame::Card::GetCardType()
 {
 	return this->_cardType;
 }
+
+bool MemoryGame::Card::IsFaceDown()
+{
+	return this->_isFaceDown;
+}
