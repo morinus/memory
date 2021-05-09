@@ -14,11 +14,13 @@ namespace MemoryGame
 
 		void Init(int numberOfPlayers);
 		void UpdatePlayerText(int playerIndex, int newScore);
+		void ColorCurrentPlayerText(int playerIndex);
 		void Render(sf::RenderWindow* window);
 
 	private:
 		void InitPlayerTexts(int numberOfPlayers);
-		void SetTextPositions();
+		void InitLeaderboardTitleText();
+		void SetPlayerTextPositions();
 
 		sf::Font _font;
 		sf::Text _leaderboardTitleText;

@@ -13,11 +13,16 @@ namespace MemoryGame
 		~SoundController();
 
 		void PlayMusic();
+		void PlayMouseClickSound();
 		void StopPlayingMusic();
 
 	private:
-		sf::Music _backgroundMusic;
+		void InitBackgroundMusic();
+		void InitMouseClickSound();
 
+		sf::SoundBuffer _mouseClickSoundBuffer;
+		sf::Sound _mouseClickSound;
+		sf::Music _backgroundMusic;
 	};
 }
 

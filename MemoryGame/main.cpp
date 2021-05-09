@@ -1,6 +1,9 @@
 #include <iostream>
 
+// SFML
 #include "SFML/Audio.hpp"
+
+// Utils
 #include "ErrorMessageStrings.h"
 #include "ResourceLocator.h"
 
@@ -36,7 +39,7 @@ int main()
 	// Music
 	soundController.PlayMusic();
 
-	boardController.InitBoard(5, 0);
+	boardController.InitBoard(5, 4);
 
 	while (window.isOpen())
 	{
@@ -49,6 +52,11 @@ int main()
 				window.close();
 
 				return 0;
+			}
+
+			if (event.type == sf::Event::MouseButtonPressed)
+			{
+				soundController.PlayMouseClickSound();
 			}
 		}
 
