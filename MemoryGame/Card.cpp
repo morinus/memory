@@ -4,6 +4,7 @@
 MemoryGame::Card::Card(CardType cardType)
 {
 	this->_cardType = cardType;
+	this->_isFaceDown = true;
 }
 
 MemoryGame::Card::~Card()
