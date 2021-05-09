@@ -11,18 +11,22 @@ namespace MemoryGame
 	class BoardController
 	{
 	public:
+		BoardController();
+		~BoardController();
+
 		void InitBoard(int numberOfPlayers, int numberOfCardPairs);
 		void Render(sf::RenderWindow* window);
 		void Update();
 
-		BoardController();
-		~BoardController();
-
 	private:
+		void InitPlayers(int numberOfPlayers);
+		void InitCards(int numberOfCardPairs);
+
 		BoardView _boardView;
 		LeaderboardView _leaderboardView;
 
 		std::vector<MemoryGame::Player> _players;
+		std::vector<MemoryGame::Card> _cards;
 	};
 }
 

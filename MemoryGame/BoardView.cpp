@@ -15,10 +15,10 @@ MemoryGame::BoardView::~BoardView()
 
 }
 
-void MemoryGame::BoardView::Init(int numberOfCards)
+void MemoryGame::BoardView::Init(std::vector<MemoryGame::Card> cards)
 {
 	this->InitBoardBackground();
-	this->InitCards(numberOfCards);
+	this->InitCards(cards);
 }
 
 void MemoryGame::BoardView::InitBoardBackground()
@@ -31,7 +31,7 @@ void MemoryGame::BoardView::InitBoardBackground()
 	_backgroundImage = sf::Sprite(_backgroundTexture);
 }
 
-void MemoryGame::BoardView::InitCards(int numberOfCards)
+void MemoryGame::BoardView::InitCards(std::vector<MemoryGame::Card> cards)
 {
 
 }

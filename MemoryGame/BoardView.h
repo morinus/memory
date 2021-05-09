@@ -14,17 +14,16 @@ namespace MemoryGame
 		BoardView();
 		~BoardView();
 
-		void Init(int numberOfCards);
+		void Init(std::vector<MemoryGame::Card> cards);
 
 		void Render(sf::RenderWindow* window);
 
 	private:
 		sf::Texture _backgroundTexture;
 		sf::Sprite _backgroundImage;
-		std::vector<MemoryGame::Card> _cards;
 
 		void InitBoardBackground();
-		void InitCards(int numberOfCards);
+		void InitCards(std::vector<MemoryGame::Card> cards);
 	};
 }
 
