@@ -17,7 +17,7 @@ MemoryGame::CardFactory::~CardFactory()
 
 }
 
-std::vector<MemoryGame::Card> GetCards(int numberOfCards)
+std::vector<MemoryGame::Card> MemoryGame::CardFactory::GetCards(int numberOfCards)
 {
 	std::vector<MemoryGame::Card> cards;
 

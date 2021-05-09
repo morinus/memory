@@ -14,7 +14,7 @@ namespace MemoryGame
 		CardFactory();
 		~CardFactory();
 
-		std::vector<Card> GetCards(int numberOfCards);
+		std::vector<MemoryGame::Card> GetCards(int numberOfCards);
 
 	};
 }
