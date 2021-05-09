@@ -137,14 +137,12 @@
     <ClCompile Include="BoardView.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Card.cpp" />
-    <ClCompile Include="CardFactory.cpp" />
     <ClCompile Include="LeaderboardView.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuController.cpp" />
     <ClCompile Include="MenuView.cpp" />
     <ClCompile Include="MenuView.h" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayerFactory.cpp" />
     <ClCompile Include="SoundController.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -152,11 +150,9 @@
     <ClInclude Include="BoardView.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Card.h" />
-    <ClInclude Include="CardFactory.h" />
     <ClInclude Include="LeaderboardView.h" />
     <ClInclude Include="MenuController.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayerFactory.h" />
     <ClInclude Include="ResourceLocator.h" />
     <ClInclude Include="SoundController.h" />
     <ClInclude Include="ErrorMessageStrings.h" />

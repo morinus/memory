@@ -19,18 +19,27 @@ namespace MemoryGame
 		Button();
 		~Button();
 
-		void Init();
+		void Init(int index);
 		void Update(sf::Event e);
+		void Render(sf::RenderWindow* window);
+
 		void ChangeButtonState(ButtonState newState);
 		void ResetButtonState();
 
+		void SetTextures(sf::Texture* backTexture, sf::Texture* frontTexture);
+
 		sf::Vector2f GetPosition() { return _position; }
-		sf::Vector2f SetPosition(sf::Vector2f newPosition) { _position = newPosition; }
+		void SetPosition(sf::Vector2f newPosition) { _position = newPosition; }
 
 	private:
 		sf::Vector2f _position;
 		ButtonState _state;
 
+		sf::Texture* _backTexture;
+		sf::Texture* _frontTexture;
+		sf::Sprite _image;
+
+		int _index;
 	};
 }
 

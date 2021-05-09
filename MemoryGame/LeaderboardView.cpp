@@ -81,8 +81,8 @@ void MemoryGame::LeaderboardView::UpdatePlayerText(int index, int newScore)
 void MemoryGame::LeaderboardView::ColorCurrentPlayerText(int index)
 {
 	int lastPlayerIndex = index != 0 ? index - 1 : _playerTexts.size() - 1;
-	this->_playerTexts[lastPlayerIndex].setFillColor(sf::Color::White);
 
+	this->_playerTexts[lastPlayerIndex].setFillColor(sf::Color::White);
 	this->_playerTexts[index].setFillColor(sf::Color::Green);
 }
 

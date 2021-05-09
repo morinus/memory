@@ -39,7 +39,7 @@ int main()
 	// Music
 	soundController.PlayMusic();
 
-	boardController.InitBoard(5, 4);
+	boardController.InitBoard(5, 2);
 
 	while (window.isOpen())
 	{

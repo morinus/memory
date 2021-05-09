@@ -3,6 +3,7 @@
 
 #include "BoardView.h"
 #include "LeaderboardView.h"
+#include "Player.h"
 
 
 namespace MemoryGame
@@ -12,16 +13,16 @@ namespace MemoryGame
 	public:
 		void InitBoard(int numberOfPlayers, int numberOfCardPairs);
 		void Render(sf::RenderWindow* window);
+		void Update();
 
 		BoardController();
 		~BoardController();
 
 	private:
-		int numberOfPlayers;
-		int numberOfCardPairs;
-
 		BoardView _boardView;
 		LeaderboardView _leaderboardView;
+
+		std::vector<MemoryGame::Player> _players;
 	};
 }
 

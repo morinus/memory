@@ -14,7 +14,7 @@ namespace MemoryGame
 		MONSTER_D = 4
 	};
 
-	class Card : public Button
+	class Card
 	{
 	public:
 		Card(CardType cardType);

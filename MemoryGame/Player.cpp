@@ -4,6 +4,7 @@
 MemoryGame::Player::Player(std::string name)
 {
 	this->_name = name;
+	this->_score = 0;
 }
 
 MemoryGame::Player::~Player()

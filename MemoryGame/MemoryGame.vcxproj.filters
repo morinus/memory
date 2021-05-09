@@ -63,17 +63,11 @@
     <ClCompile Include="SoundController.cpp">
       <Filter>Source Files\Controllers</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerFactory.cpp">
-      <Filter>Source Files\Model</Filter>
-    </ClCompile>
     <ClCompile Include="LeaderboardView.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CardFactory.cpp">
-      <Filter>Source Files\Model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -104,14 +98,8 @@
     <ClInclude Include="ResourceLocator.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerFactory.h">
-      <Filter>Header Files\Model</Filter>
-    </ClInclude>
     <ClInclude Include="LeaderboardView.h">
       <Filter>Header Files\Views</Filter>
-    </ClInclude>
-    <ClInclude Include="CardFactory.h">
-      <Filter>Header Files\Model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
