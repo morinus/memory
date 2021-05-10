@@ -1,4 +1,7 @@
 #include "BoardController.h"
+#include "stdlib.h"
+
+constexpr int NUMBER_OF_CARD_TYPES = 4;
 
 
 MemoryGame::BoardController::BoardController()
@@ -33,7 +36,15 @@ void MemoryGame::BoardController::InitPlayers(int numberOfPlayers)
 
 void MemoryGame::BoardController::InitCards(int numberOfCardPairs)
 {
+	for (int i = 0; i < numberOfCardPairs; i += 2)
+	{
+		CardType cardType = CardType(std::rand() % NUMBER_OF_CARD_TYPES);
+		Card card(cardType);
 
+		// We need two of the same type of cards
+		this->_cards.push_back(card);
+		this->_cards.push_back(card);
+	}
 }
 
 void MemoryGame::BoardController::Render(sf::RenderWindow* window)
