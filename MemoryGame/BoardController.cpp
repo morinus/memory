@@ -16,13 +16,19 @@ void MemoryGame::BoardController::InitBoard(int numberOfPlayers, int numberOfCar
 	this->InitPlayers(numberOfPlayers);
 	this->InitCards(numberOfCardPairs);
 
-	this->_leaderboardView.Init(numberOfPlayers);
+	this->_leaderboardView.Init(this->_players);
 	this->_boardView.Init(this->_cards);
 }
 
 void MemoryGame::BoardController::InitPlayers(int numberOfPlayers)
 {
+	for (int i = 0; i < numberOfPlayers; ++i)
+	{
+		std::string playerName = "Player" + std::to_string(i);
+		Player player(playerName);
 
+		this->_players.push_back(player);
+	}
 }
 
 void MemoryGame::BoardController::InitCards(int numberOfCardPairs)

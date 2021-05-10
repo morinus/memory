@@ -3,6 +3,8 @@
 
 #include "SFML/Graphics.hpp"
 
+#include "Player.h"
+
 
 namespace MemoryGame
 {
@@ -12,13 +14,13 @@ namespace MemoryGame
 		LeaderboardView();
 		~LeaderboardView();
 
-		void Init(int numberOfPlayers);
+		void Init(std::vector<Player> players);
 		void UpdatePlayerText(int playerIndex, int newScore);
 		void ColorCurrentPlayerText(int playerIndex);
 		void Render(sf::RenderWindow* window);
 
 	private:
-		void InitPlayerTexts(int numberOfPlayers);
+		void InitPlayerTexts(std::vector<Player> players);
 		void InitLeaderboardTitleText();
 		void SetPlayerTextPositions();
 

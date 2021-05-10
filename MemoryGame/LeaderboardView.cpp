@@ -26,9 +26,9 @@ MemoryGame::LeaderboardView::~LeaderboardView()
 
 }
 
-void MemoryGame::LeaderboardView::Init(int numberOfPlayers)
+void MemoryGame::LeaderboardView::Init(std::vector<Player> players)
 {
-	this->InitPlayerTexts(numberOfPlayers);
+	this->InitPlayerTexts(players);
 	this->InitLeaderboardTitleText();
 
 	this->SetPlayerTextPositions();
@@ -36,13 +36,13 @@ void MemoryGame::LeaderboardView::Init(int numberOfPlayers)
 	this->ColorCurrentPlayerText(0);
 }
 
-void MemoryGame::LeaderboardView::InitPlayerTexts(int numberOfPlayers)
+void MemoryGame::LeaderboardView::InitPlayerTexts(std::vector<Player> players)
 {
-	for (int i = 0; i < numberOfPlayers; ++i)
+	for (Player player : players)
 	{
 		sf::Text playerText;
 		playerText.setFont(_font);
-		playerText.setString("Player " + std::to_string(i + 1) + ": 0");
+		playerText.setString(player.GetName() + ": " + std::to_string(player.GetScore()));
 		playerText.setCharacterSize(PLAYER_TEXT_SIZE);
 		playerText.setPosition(PLAYER_TEXT_OFFSET_X, PLAYER_TEXT_OFFSET_Y);
 
