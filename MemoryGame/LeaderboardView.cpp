@@ -75,7 +75,6 @@ void MemoryGame::LeaderboardView::SetPlayerTextPositions()
 void MemoryGame::LeaderboardView::UpdatePlayerText(int index, int newScore)
 {
 	// TODO:
-	//_playerTexts[index].setString("Player" + index + 1 + ':' + newScore);
 }
 
 void MemoryGame::LeaderboardView::ColorCurrentPlayerText(int index)

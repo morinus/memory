@@ -16,7 +16,7 @@ namespace MemoryGame
 	class Button
 	{
 	public:
-		Button();
+		Button(sf::Texture* backTexture, sf::Texture* frontTexture, int index);
 		~Button();
 
 		void Init(int index);
@@ -25,8 +25,6 @@ namespace MemoryGame
 
 		void ChangeButtonState(ButtonState newState);
 		void ResetButtonState();
-
-		void SetTextures(sf::Texture* backTexture, sf::Texture* frontTexture);
 
 		sf::Vector2f GetPosition() { return _position; }
 		void SetPosition(sf::Vector2f newPosition) { _position = newPosition; }

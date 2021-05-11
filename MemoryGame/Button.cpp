@@ -1,9 +1,13 @@
 #include "Button.h"
 
 
-MemoryGame::Button::Button()
+MemoryGame::Button::Button(sf::Texture* backTexture, sf::Texture* frontTexture, int index)
 {
+	this->_backTexture = backTexture;
+	this->_frontTexture = frontTexture;
+	this->_index = index;
 
+	this->_image = sf::Sprite(*_backTexture);
 }
 
 MemoryGame::Button::~Button()
@@ -35,12 +39,4 @@ void MemoryGame::Button::ChangeButtonState(ButtonState newState)
 void MemoryGame::Button::ResetButtonState()
 {
 	this->_state = ButtonState::NORMAL;
-}
-
-void MemoryGame::Button::SetTextures(sf::Texture* backTexture, sf::Texture* frontTexture)
-{
-	this->_backTexture = backTexture;
-	this->_frontTexture = frontTexture;
-
-	this->_image = sf::Sprite(*_backTexture);
 }

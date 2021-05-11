@@ -19,11 +19,22 @@ namespace MemoryGame
 		void Render(sf::RenderWindow* window);
 
 	private:
-		sf::Texture _backgroundTexture;
-		sf::Sprite _backgroundImage;
-
 		void InitBoardBackground();
 		void InitCards(std::vector<MemoryGame::Card> cards);
+		void InitTextures();
+
+		sf::Texture* GetTextureByCardType(CardType cardType);
+
+		sf::Texture _monsterATexture;
+		sf::Texture _monsterBTexture;
+		sf::Texture _monsterCTexture;
+		sf::Texture _monsterDTexture;
+		sf::Texture _cardBackTexture;
+
+		std::vector<Button*> _cardButtons;
+
+		sf::Texture _backgroundTexture;
+		sf::Sprite _backgroundImage;
 	};
 }
 
