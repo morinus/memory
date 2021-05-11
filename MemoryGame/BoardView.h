@@ -22,6 +22,7 @@ namespace MemoryGame
 		void InitBoardBackground();
 		void InitCards(std::vector<MemoryGame::Card> cards);
 		void InitTextures();
+		void SetupCardButtons();
 
 		sf::Texture* GetTextureByCardType(CardType cardType);
 

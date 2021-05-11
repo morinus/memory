@@ -24,6 +24,8 @@ void MemoryGame::BoardView::Init(std::vector<MemoryGame::Card> cards)
 {
 	this->InitBoardBackground();
 	this->InitCards(cards);
+
+	this->SetupCardButtons();
 }
 
 void MemoryGame::BoardView::InitBoardBackground()
@@ -45,6 +47,14 @@ void MemoryGame::BoardView::InitCards(std::vector<MemoryGame::Card> cards)
 		Button* cardButton = new Button(&_cardBackTexture, this->GetTextureByCardType(cardType), i++);
 
 		this->_cardButtons.push_back(cardButton);
+	}
+}
+
+void MemoryGame::BoardView::SetupCardButtons()
+{
+	for (auto button : this->_cardButtons)
+	{
+		button->SetPosition(sf::Vector2f(400, 400));
 	}
 }
 
