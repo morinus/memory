@@ -26,11 +26,10 @@ namespace MemoryGame
 		void ChangeButtonState(ButtonState newState);
 		void ResetButtonState();
 
-		sf::Vector2f GetPosition() { return _position; }
-		void SetPosition(sf::Vector2f newPosition) { _position = newPosition; }
+		void SetPosition(sf::Vector2f newPosition);
+		void SetScale(sf::Vector2f newScale);
 
 	private:
-		sf::Vector2f _position;
 		ButtonState _state;
 
 		sf::Texture* _backTexture;

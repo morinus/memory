@@ -12,8 +12,7 @@ MemoryGame::Button::Button(sf::Texture* backTexture, sf::Texture* frontTexture, 
 
 MemoryGame::Button::~Button()
 {
-	delete _backTexture;
-	delete _frontTexture;
+
 }
 
 void MemoryGame::Button::Init(int index)
@@ -39,4 +38,14 @@ void MemoryGame::Button::ChangeButtonState(ButtonState newState)
 void MemoryGame::Button::ResetButtonState()
 {
 	this->_state = ButtonState::NORMAL;
+}
+
+void MemoryGame::Button::SetPosition(sf::Vector2f newPosition)
+{
+	this->_image.setPosition(newPosition);
+}
+
+void MemoryGame::Button::SetScale(sf::Vector2f newScale)
+{
+	this->_image.setScale(newScale);
 }

@@ -23,6 +23,7 @@ MemoryGame::BoardView::~BoardView()
 void MemoryGame::BoardView::Init(std::vector<MemoryGame::Card> cards)
 {
 	this->InitBoardBackground();
+	this->InitTextures();
 	this->InitCards(cards);
 
 	this->SetupCardButtons();
