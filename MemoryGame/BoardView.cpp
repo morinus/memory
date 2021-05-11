@@ -53,9 +53,12 @@ void MemoryGame::BoardView::InitCards(std::vector<MemoryGame::Card> cards)
 
 void MemoryGame::BoardView::SetupCardButtons()
 {
-	for (auto button : this->_cardButtons)
+	int offset = 150;
+
+	for (int i = 0; i < this->_cardButtons.capacity(); ++i)
 	{
-		button->SetPosition(sf::Vector2f(400, 400));
+		this->_cardButtons[i]->SetPosition(sf::Vector2f(300 + offset * i, 100));
+		this->_cardButtons[i]->SetScale(sf::Vector2f(0.5, 0.5));
 	}
 }
 
