@@ -5,10 +5,7 @@ int main()
 {
 	MemoryGame::Game game;
 
-	while (game.GetWindow()->isOpen())
-	{
-		game.Update();
-	}
+	game.Play();
 
 	return 0;
 }

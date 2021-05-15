@@ -39,7 +39,7 @@ void MemoryGame::Game::InitGame()
 {
 	this->_soundController.PlayMusic();
 
-	this->_boardController.InitBoard(3, 4);
+	this->_boardController.InitBoard(3, 12);
 }
 
 sf::RenderWindow* MemoryGame::Game::GetWindow()
@@ -47,26 +47,38 @@ sf::RenderWindow* MemoryGame::Game::GetWindow()
 	return this->_window;
 }
 
-void MemoryGame::Game::Update()
+void MemoryGame::Game::Play()
 {
-	this->ProcessInput();
-	this->Render();
+	while (this->_window->isOpen())
+	{
+		this->ProcessInput();
+		this->Update();
+		this->Render();
+	}
 }
 
 void MemoryGame::Game::ProcessInput()
 {
-	// Event Pooling
 	sf::Event event;
+
 	while (this->_window->pollEvent(event))
 	{
-		if (event.type == sf::Event::Closed)
+		switch (event.type)
 		{
+		case sf::Event::Closed:
 			this->_window->close();
-		}
+			break;
+		case sf::Event::MouseButtonPressed:
+			if (event.mouseButton.button == sf::Mouse::Left)
+			{
+				sf::Vector2f mousePosition = this->_window->mapPixelToCoords(sf::Mouse::getPosition(*this->_window));
 
-		if (event.type == sf::Event::MouseButtonPressed)
-		{
-			this->_soundController.PlayMouseClickSound();
+				this->_boardController.ProcessMouseClick(mousePosition);
+				this->_soundController.PlayMouseClickSound();
+			}
+			break;
+		default:
+			break;
 		}
 	}
 }
@@ -79,4 +91,9 @@ void MemoryGame::Game::Render()
 	_menuController.Render(this->_window);
 
 	this->_window->display();
+}
+
+void MemoryGame::Game::Update()
+{
+	_boardController.Update();
 }

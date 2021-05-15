@@ -13,7 +13,7 @@ namespace MemoryGame
 		Game();
 		~Game();
 
-		void Update();
+		void Play();
 		sf::RenderWindow* GetWindow();
 
 	private:
@@ -27,6 +27,7 @@ namespace MemoryGame
 		void InitGame();
 
 		void ProcessInput();
+		void Update();
 		void Render();
 	};
 }
