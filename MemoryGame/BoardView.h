@@ -15,7 +15,7 @@ namespace MemoryGame
 		~BoardView();
 
 		void Init(std::vector<MemoryGame::Card> cards);
-
+		int GetClickedButtonIndex(sf::Vector2f mousePosition);
 		void Render(sf::RenderWindow* window);
 
 	private:

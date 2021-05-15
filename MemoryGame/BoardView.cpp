@@ -1,4 +1,6 @@
 #include <iostream>
+#include <random>
+#include <chrono>
 
 #include "BoardView.h"
 #include "ErrorMessageStrings.h"
@@ -29,6 +31,23 @@ void MemoryGame::BoardView::Init(std::vector<MemoryGame::Card> cards)
 	this->SetupCardButtons();
 }
 
+int MemoryGame::BoardView::GetClickedButtonIndex(sf::Vector2f mousePosition)
+{
+	for (int i = 0; i < this->_cardButtons.capacity() - 1; ++i)
+	{
+		auto button = this->_cardButtons[i];
+
+		if (button->GetImage().getGlobalBounds().contains(mousePosition))
+		{
+			button->ChangeButtonState(MemoryGame::ButtonState::CLICKED);
+
+			return button->GetIndex();
+		}
+	}
+
+	return -1;
+}
+
 void MemoryGame::BoardView::InitBoardBackground()
 {
 	if (!_backgroundTexture.loadFromFile(BACKGROUND_TEXTURE_FILEPATH))
@@ -49,16 +68,32 @@ void MemoryGame::BoardView::InitCards(std::vector<MemoryGame::Card> cards)
 
 		this->_cardButtons.push_back(cardButton);
 	}
+
+	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+	std::shuffle(this->_cardButtons.begin(), this->_cardButtons.end(), std::default_random_engine(seed));
 }
 
 void MemoryGame::BoardView::SetupCardButtons()
 {
 	int offset = 150;
 
-	for (int i = 0; i < this->_cardButtons.capacity(); ++i)
+	/*for (int i = 0; i < this->_cardButtons.capacity(); ++i)
 	{
 		this->_cardButtons[i]->SetPosition(sf::Vector2f(300 + offset * i, 100));
 		this->_cardButtons[i]->SetScale(sf::Vector2f(0.5, 0.5));
+	}*/
+
+	// Temporary solution, should be done inside a rectangle dynamically in algorithm pattern
+
+	int cardsPlaced = 0;
+	for (int j = 0; j < 3; j++)
+	{
+		for (int i = 0; i < 4; ++i)
+		{
+			this->_cardButtons[cardsPlaced]->SetPosition(sf::Vector2f(300 + offset * i, 100 + (200 * j)));
+			this->_cardButtons[cardsPlaced]->SetScale(sf::Vector2f(0.5, 0.5));
+			cardsPlaced++;
+		}
 	}
 }
 

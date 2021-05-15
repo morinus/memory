@@ -9,8 +9,7 @@ namespace MemoryGame
 	enum ButtonState
 	{
 		NORMAL = 0,
-		HOVERED = 1,
-		CLICKED = 2
+		CLICKED = 1
 	};
 
 	class Button
@@ -28,6 +27,9 @@ namespace MemoryGame
 
 		void SetPosition(sf::Vector2f newPosition);
 		void SetScale(sf::Vector2f newScale);
+
+		sf::Sprite GetImage() { return _image; }
+		int GetIndex() { return _index; }
 
 	private:
 		ButtonState _state;
