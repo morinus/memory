@@ -6,6 +6,7 @@ MemoryGame::Button::Button(sf::Texture* backTexture, sf::Texture* frontTexture, 
 	this->_backTexture = backTexture;
 	this->_frontTexture = frontTexture;
 	this->_index = index;
+	this->_isInteractible = true;
 
 	this->_image = sf::Sprite(*_backTexture);
 }

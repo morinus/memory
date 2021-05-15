@@ -39,6 +39,7 @@ namespace MemoryGame
 		sf::Sprite _image;
 
 		int _index;
+		bool _isInteractible;
 	};
 }
 
