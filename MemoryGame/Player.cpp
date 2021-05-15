@@ -22,7 +22,7 @@ const int MemoryGame::Player::GetScore()
 	return this->_score;
 }
 
-void MemoryGame::Player::SetScore(int newScore)
+void MemoryGame::Player::IncreaseScore()
 {
-	this->_score = newScore;
+	this->_score++;
 }

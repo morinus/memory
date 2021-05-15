@@ -13,7 +13,7 @@ namespace MemoryGame
 		~Player();
 
 		const int GetScore();
-		void SetScore(int newScore);
+		void IncreaseScore();
 
 		const std::string GetName();
 
