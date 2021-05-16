@@ -18,6 +18,7 @@ namespace MemoryGame
 		void DeselectButtons();
 		void SetIsInteractible(int index, bool isInteractible);
 		void Render(sf::RenderWindow* window);
+		void Update(float elapsedTime);
 
 		int GetSelectedButtonIndex(sf::Vector2f mousePosition);
 

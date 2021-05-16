@@ -22,6 +22,7 @@ namespace MemoryGame
 		MemoryGame::SoundController _soundController;
 
 		sf::RenderWindow* _window;
+		sf::Clock _clock;
 
 		void InitWindow();
 		void InitGame();

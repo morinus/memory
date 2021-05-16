@@ -22,11 +22,6 @@ void MemoryGame::Button::Init(int index)
 	this->_index = index;
 }
 
-void MemoryGame::Button::Update(sf::Event e)
-{
-
-}
-
 void MemoryGame::Button::Render(sf::RenderWindow* window)
 {
 	if (this->_isInteractible)
@@ -59,4 +54,9 @@ void MemoryGame::Button::SetIsInteractible(bool isInteractible)
 sf::Sprite MemoryGame::Button::GetImage()
 {
 	return this->_isInteractible ? this->_backSprite : this->_frontSprite;
+}
+
+void MemoryGame::Button::Update(float elapsedTime)
+{
+
 }

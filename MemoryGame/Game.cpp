@@ -101,5 +101,7 @@ void MemoryGame::Game::Render()
 
 void MemoryGame::Game::Update()
 {
-	_boardController.Update();
+	auto elapsedTime = this->_clock.restart().asMilliseconds();
+
+	_boardController.Update(elapsedTime);
 }

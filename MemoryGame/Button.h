@@ -13,7 +13,7 @@ namespace MemoryGame
 		~Button();
 
 		void Init(int index);
-		void Update(sf::Event e);
+		void Update(float elapsedTime);
 		void Render(sf::RenderWindow* window);
 
 		void SetPosition(sf::Vector2f newPosition);

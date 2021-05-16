@@ -132,7 +132,7 @@ void MemoryGame::BoardController::Render(sf::RenderWindow* window)
 	this->_leaderboardView.Render(window);
 }
 
-void MemoryGame::BoardController::Update()
+void MemoryGame::BoardController::Update(sf::Int32 elapsedTime)
 {
-
+	this->_boardView.Update(elapsedTime);
 }

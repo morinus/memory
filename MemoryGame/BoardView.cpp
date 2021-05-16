@@ -164,3 +164,11 @@ void MemoryGame::BoardView::Render(sf::RenderWindow* window)
 		button->Render(window);
 	}
 }
+
+void MemoryGame::BoardView::Update(float elapsedTime)
+{
+	for (auto button : this->_cardButtons)
+	{
+		button->Update(elapsedTime);
+	}
+}
