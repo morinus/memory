@@ -29,11 +29,11 @@ namespace MemoryGame
 
 		sf::Texture* GetTextureByCardType(CardType cardType);
 
-		sf::Texture* _monsterATexture;
-		sf::Texture* _monsterBTexture;
-		sf::Texture* _monsterCTexture;
-		sf::Texture* _monsterDTexture;
-		sf::Texture* _cardBackTexture;
+		sf::Texture _monsterATexture;
+		sf::Texture _monsterBTexture;
+		sf::Texture _monsterCTexture;
+		sf::Texture _monsterDTexture;
+		sf::Texture _cardBackTexture;
 
 		std::vector<Button*> _cardButtons;
 
