@@ -3,7 +3,6 @@
 
 #include "BoardView.h"
 #include "LeaderboardView.h"
-#include "MenuView.h"
 #include "Player.h"
 
 
@@ -17,8 +16,8 @@ namespace MemoryGame
 
 		void InitBoard(int numberOfPlayers, int numberOfCards);
 		void ProcessMouseClick(sf::Vector2f mousePosition);
-		void Render(sf::RenderWindow* window);
-		void Update(sf::Int32 elapsedTime);
+		void Render(std::shared_ptr<sf::RenderWindow> window);
+		void Update(float elapsedTime);
 
 	private:
 		void InitPlayers(int numberOfPlayers);

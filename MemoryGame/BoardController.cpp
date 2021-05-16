@@ -144,7 +144,7 @@ bool MemoryGame::BoardController::CheckIfGameOver()
 	return true;
 }
 
-void MemoryGame::BoardController::Render(sf::RenderWindow* window)
+void MemoryGame::BoardController::Render(std::shared_ptr<sf::RenderWindow> window)
 {
 	this->_boardView.Render(window);
 	this->_leaderboardView.Render(window);
@@ -152,7 +152,7 @@ void MemoryGame::BoardController::Render(sf::RenderWindow* window)
 	if (this->_isGameOver) {}
 }
 
-void MemoryGame::BoardController::Update(sf::Int32 elapsedTime)
+void MemoryGame::BoardController::Update(float elapsedTime)
 {
 	this->_boardView.Update(elapsedTime);
 }

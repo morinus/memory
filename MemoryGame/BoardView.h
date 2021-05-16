@@ -17,7 +17,7 @@ namespace MemoryGame
 		void Init(std::vector<MemoryGame::Card> cards);
 		void DeselectButtons();
 		void SetIsInteractible(int index, bool isInteractible);
-		void Render(sf::RenderWindow* window);
+		void Render(std::shared_ptr<sf::RenderWindow> window);
 		void Update(float elapsedTime);
 
 		int GetSelectedButtonIndex(sf::Vector2f mousePosition);
@@ -36,7 +36,7 @@ namespace MemoryGame
 		sf::Texture _monsterDTexture;
 		sf::Texture _cardBackTexture;
 
-		std::vector<Button*> _cardButtons;
+		std::vector<std::shared_ptr<Button>> _cardButtons;
 
 		sf::Texture _backgroundTexture;
 		sf::Sprite _backgroundImage;

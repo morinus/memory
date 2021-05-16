@@ -14,7 +14,7 @@ namespace MemoryGame
 
 		void Init(int index);
 		void Update(float elapsedTime);
-		void Render(sf::RenderWindow* window);
+		void Render(std::shared_ptr<sf::RenderWindow> window);
 
 		void SetPosition(sf::Vector2f newPosition);
 		void SetScale(sf::Vector2f newScale);
@@ -28,8 +28,8 @@ namespace MemoryGame
 		void ProcessTurnAnimation(float elapsedTime);
 		void ProcessInteractionPaused(float elapsedTime);
 
-		std::unique_ptr<sf::Texture> _backTexture;
-		std::unique_ptr<sf::Texture> _frontTexture;
+		sf::Texture* _backTexture;
+		sf::Texture* _frontTexture;
 		sf::Sprite _frontSprite;
 		sf::Sprite _backSprite;
 

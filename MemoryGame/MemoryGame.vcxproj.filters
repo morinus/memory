@@ -48,15 +48,6 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
-    <ClCompile Include="MenuView.h">
-      <Filter>Header Files\Views</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuController.cpp">
-      <Filter>Source Files\Controllers</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuView.cpp">
-      <Filter>Source Files\Views</Filter>
-    </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
@@ -85,9 +76,6 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuController.h">
-      <Filter>Header Files\Controllers</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>Header Files\Model</Filter>

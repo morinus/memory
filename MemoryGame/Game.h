@@ -1,7 +1,6 @@
 #include "SFML/Graphics.hpp"
 
 #include "BoardController.h"
-#include "MenuController.h"
 #include "SoundController.h"
 
 
@@ -14,14 +13,13 @@ namespace MemoryGame
 		~Game();
 
 		void Play();
-		sf::RenderWindow* GetWindow() { return _window; }
+		std::shared_ptr<sf::RenderWindow> GetWindow() { return _window; }
 
 	private:
 		MemoryGame::BoardController _boardController;
-		//MemoryGame::MenuController _menuController;
 		MemoryGame::SoundController _soundController;
 
-		sf::RenderWindow* _window;
+		std::shared_ptr<sf::RenderWindow> _window;
 		sf::Clock _clock;
 
 		void InitWindow();

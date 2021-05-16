@@ -24,11 +24,6 @@ MemoryGame::BoardView::BoardView()
 
 MemoryGame::BoardView::~BoardView()
 {
-	for (auto button : this->_cardButtons)
-	{
-		delete button;
-	}
-
 	this->_cardButtons.clear();
 }
 
@@ -52,7 +47,7 @@ int MemoryGame::BoardView::GetSelectedButtonIndex(sf::Vector2f mousePosition)
 {
 	for (int i = 0; i < this->_cardButtons.size(); ++i)
 	{
-		Button* button = this->_cardButtons[i];
+		std::shared_ptr<Button> button = this->_cardButtons[i];
 		auto isInteractible = button->GetIsInteractible();
 		auto isInsideBounds = button->GetImage().getGlobalBounds().contains(mousePosition);
 
@@ -104,7 +99,7 @@ void MemoryGame::BoardView::InitCards(std::vector<MemoryGame::Card> cards)
 	for (auto card : cards)
 	{
 		auto cardType = card.GetCardType();
-		Button* cardButton = new Button(&_cardBackTexture, this->GetTextureByCardType(cardType), i++);
+		std::shared_ptr<Button> cardButton = std::make_shared<Button>(&_cardBackTexture, this->GetTextureByCardType(cardType), i++);
 
 		this->_cardButtons.push_back(cardButton);
 	}
@@ -155,7 +150,7 @@ sf::Texture* MemoryGame::BoardView::GetTextureByCardType(CardType cardType)
 	}
 }
 
-void MemoryGame::BoardView::Render(sf::RenderWindow* window)
+void MemoryGame::BoardView::Render(std::shared_ptr<sf::RenderWindow> window)
 {
 	window->draw(_backgroundImage);
 

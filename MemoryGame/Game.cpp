@@ -29,12 +29,12 @@ MemoryGame::Game::Game()
 
 MemoryGame::Game::~Game()
 {
-	delete this->_window;
+
 }
 
 void MemoryGame::Game::InitWindow()
 {
-	this->_window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::Close);
+	this->_window = std::make_shared<sf::RenderWindow>(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::Close);
 
 	sf::Image icon;
 	if (!icon.loadFromFile(WINDOW_ICON_FILEPATH))
@@ -102,5 +102,5 @@ void MemoryGame::Game::Update()
 {
 	auto elapsedTime = this->_clock.restart().asMilliseconds();
 
-	_boardController.Update(elapsedTime);
+	_boardController.Update((float)elapsedTime);
 }

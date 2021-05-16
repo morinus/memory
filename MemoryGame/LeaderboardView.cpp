@@ -97,7 +97,7 @@ void MemoryGame::LeaderboardView::ColorCurrentPlayerText(int index)
 	this->_playerTexts[index].setFillColor(sf::Color::Green);
 }
 
-void MemoryGame::LeaderboardView::Render(sf::RenderWindow* window)
+void MemoryGame::LeaderboardView::Render(std::shared_ptr<sf::RenderWindow> window)
 {
 	window->draw(_leaderboardTitleText);
 

@@ -17,7 +17,7 @@ namespace MemoryGame
 		void Init(std::vector<Player> players);
 		void UpdatePlayerText(int index, sf::String newString);
 		void ColorCurrentPlayerText(int playerIndex);
-		void Render(sf::RenderWindow* window);
+		void Render(std::shared_ptr<sf::RenderWindow> window);
 
 	private:
 		void InitFont();

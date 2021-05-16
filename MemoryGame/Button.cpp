@@ -7,8 +7,8 @@ constexpr float ANGLE_FULL_CIRCLE = 360.f;
 
 MemoryGame::Button::Button(sf::Texture* backTexture, sf::Texture* frontTexture, int index)
 {
-	this->_backTexture = std::make_unique<sf::Texture>(*backTexture);
-	this->_frontTexture = std::make_unique<sf::Texture>(*frontTexture);
+	this->_backTexture = backTexture;
+	this->_frontTexture = frontTexture;
 	this->_index = index;
 	this->_isInteractible = true;
 	this->_interactionPaused = false;
@@ -33,7 +33,7 @@ void MemoryGame::Button::Init(int index)
 	this->_index = index;
 }
 
-void MemoryGame::Button::Render(sf::RenderWindow* window)
+void MemoryGame::Button::Render(std::shared_ptr<sf::RenderWindow> window)
 {
 	if (this->_isInteractible)
 	{
