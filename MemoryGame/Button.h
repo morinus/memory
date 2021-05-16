@@ -28,8 +28,8 @@ namespace MemoryGame
 		void ProcessTurnAnimation(float elapsedTime);
 		void ProcessInteractionPaused(float elapsedTime);
 
-		sf::Texture* _backTexture;
-		sf::Texture* _frontTexture;
+		std::unique_ptr<sf::Texture> _backTexture;
+		std::unique_ptr<sf::Texture> _frontTexture;
 		sf::Sprite _frontSprite;
 		sf::Sprite _backSprite;
 
