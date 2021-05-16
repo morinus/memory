@@ -9,8 +9,15 @@ constexpr int MOUSECLICK_VOLUME = 50;
 
 MemoryGame::SoundController::SoundController()
 {
-	this->InitBackgroundMusic();
-	this->InitMouseClickSound();
+	try
+	{
+		this->InitBackgroundMusic();
+		this->InitMouseClickSound();
+	}
+	catch (std::string errorMessage)
+	{
+		std::cout << errorMessage << std::endl;
+	}
 }
 
 MemoryGame::SoundController::~SoundController()
@@ -22,7 +29,7 @@ void MemoryGame::SoundController::InitBackgroundMusic()
 {
 	if (!_backgroundMusic.openFromFile(BACKGROUND_MUSIC_FILEPATH))
 	{
-		std::cout << ERROR_LOADING_MUSIC_FILE << std::endl;
+		throw(ERROR_LOADING_AUDIO_FILE);
 	}
 
 	_backgroundMusic.setLoop(true);
@@ -32,7 +39,7 @@ void MemoryGame::SoundController::InitMouseClickSound()
 {
 	if (!_mouseClickSoundBuffer.loadFromFile(SOUND_MOUSECLICK_FILEPATH))
 	{
-		std::cout << ERROR_LOADING_MUSIC_FILE << std::endl;
+		throw(ERROR_LOADING_AUDIO_FILE);
 	}
 
 	_mouseClickSound.setBuffer(_mouseClickSoundBuffer);

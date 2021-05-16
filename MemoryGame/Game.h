@@ -14,11 +14,11 @@ namespace MemoryGame
 		~Game();
 
 		void Play();
-		sf::RenderWindow* GetWindow();
+		sf::RenderWindow* GetWindow() { return _window; }
 
 	private:
 		MemoryGame::BoardController _boardController;
-		MemoryGame::MenuController _menuController;
+		//MemoryGame::MenuController _menuController;
 		MemoryGame::SoundController _soundController;
 
 		sf::RenderWindow* _window;

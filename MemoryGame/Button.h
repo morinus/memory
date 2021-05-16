@@ -6,12 +6,6 @@
 
 namespace MemoryGame
 {
-	enum ButtonState
-	{
-		NORMAL = 0,
-		CLICKED = 1
-	};
-
 	class Button
 	{
 	public:
@@ -22,17 +16,17 @@ namespace MemoryGame
 		void Update(sf::Event e);
 		void Render(sf::RenderWindow* window);
 
-		void ChangeButtonState(ButtonState newState);
-		void ResetButtonState();
-
 		void SetPosition(sf::Vector2f newPosition);
 		void SetScale(sf::Vector2f newScale);
+		void SetIsInteractible(bool isInteractible);
 
 		sf::Sprite GetImage() { return _image; }
 		int GetIndex() { return _index; }
+		bool GetIsInteractible() { return _isInteractible; }
 
 	private:
-		ButtonState _state;
+		void SetFrontTexture();
+		void SetBackTexture();
 
 		sf::Texture* _backTexture;
 		sf::Texture* _frontTexture;

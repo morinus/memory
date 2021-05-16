@@ -15,11 +15,12 @@ namespace MemoryGame
 		~LeaderboardView();
 
 		void Init(std::vector<Player> players);
-		void UpdatePlayerText(int playerIndex, int newScore);
+		void UpdatePlayerText(int index, sf::String newString);
 		void ColorCurrentPlayerText(int playerIndex);
 		void Render(sf::RenderWindow* window);
 
 	private:
+		void InitFont();
 		void InitPlayerTexts(std::vector<Player> players);
 		void InitLeaderboardTitleText();
 		void SetPlayerTextPositions();

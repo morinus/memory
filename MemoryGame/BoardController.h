@@ -14,19 +14,28 @@ namespace MemoryGame
 		BoardController();
 		~BoardController();
 
-		void InitBoard(int numberOfPlayers, int numberOfCardPairs);
+		void InitBoard(int numberOfPlayers, int numberOfCards);
+		void ProcessMouseClick(sf::Vector2f mousePosition);
 		void Render(sf::RenderWindow* window);
 		void Update();
 
 	private:
 		void InitPlayers(int numberOfPlayers);
 		void InitCards(int numberOfCardPairs);
+		void ProcessCurrentlySelectedCards();
+		void DeselectEverything();
+		void UpdateCurrentPlayerText();
+		void ChangePlayerTurn();
 
 		BoardView _boardView;
 		LeaderboardView _leaderboardView;
 
 		std::vector<MemoryGame::Player> _players;
 		std::vector<MemoryGame::Card> _cards;
+
+		int _firstSelectedCardIndex;
+		int _secondSelectedCardIndex;
+		int _currentPlayerIndex;
 	};
 }
 

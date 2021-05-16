@@ -20,12 +20,10 @@ namespace MemoryGame
 		Card(CardType cardType);
 		~Card();
 
-		CardType GetCardType();
-		bool IsFaceDown();
+		CardType GetCardType() { return _cardType; }
 
 	private:
 		CardType _cardType;
-		bool _isFaceDown;
 
 	};
 }

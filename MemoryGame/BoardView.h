@@ -15,8 +15,11 @@ namespace MemoryGame
 		~BoardView();
 
 		void Init(std::vector<MemoryGame::Card> cards);
-		int GetClickedButtonIndex(sf::Vector2f mousePosition);
+		void DeselectButtons();
+		void SetIsInteractible(int index, bool isInteractible);
 		void Render(sf::RenderWindow* window);
+
+		int GetSelectedButtonIndex(sf::Vector2f mousePosition);
 
 	private:
 		void InitBoardBackground();
@@ -26,11 +29,11 @@ namespace MemoryGame
 
 		sf::Texture* GetTextureByCardType(CardType cardType);
 
-		sf::Texture _monsterATexture;
-		sf::Texture _monsterBTexture;
-		sf::Texture _monsterCTexture;
-		sf::Texture _monsterDTexture;
-		sf::Texture _cardBackTexture;
+		sf::Texture* _monsterATexture;
+		sf::Texture* _monsterBTexture;
+		sf::Texture* _monsterCTexture;
+		sf::Texture* _monsterDTexture;
+		sf::Texture* _cardBackTexture;
 
 		std::vector<Button*> _cardButtons;
 

@@ -15,10 +15,7 @@ constexpr int LEADERBOARD_TITLE_TEXT_OFFSET_Y = 25;
 
 MemoryGame::LeaderboardView::LeaderboardView()
 {
-	if (!_font.loadFromFile(FONT_FILEPATH))
-	{
-		std::cout << ERROR_LOADING_FONT << std::endl;
-	}
+
 }
 
 MemoryGame::LeaderboardView::~LeaderboardView()
@@ -28,11 +25,18 @@ MemoryGame::LeaderboardView::~LeaderboardView()
 
 void MemoryGame::LeaderboardView::Init(std::vector<Player> players)
 {
-	this->InitPlayerTexts(players);
-	this->InitLeaderboardTitleText();
+	try
+	{
+		this->InitFont();
+		this->InitPlayerTexts(players);
+		this->InitLeaderboardTitleText();
+	}
+	catch (std::string errorMessage)
+	{
+		std::cout << errorMessage << std::endl;
+	}
 
 	this->SetPlayerTextPositions();
-
 	this->ColorCurrentPlayerText(0);
 }
 
@@ -47,6 +51,14 @@ void MemoryGame::LeaderboardView::InitPlayerTexts(std::vector<Player> players)
 		playerText.setPosition(PLAYER_TEXT_OFFSET_X, PLAYER_TEXT_OFFSET_Y);
 
 		_playerTexts.push_back(playerText);
+	}
+}
+
+void MemoryGame::LeaderboardView::InitFont()
+{
+	if (!this->_font.loadFromFile(FONT_FILEPATH))
+	{
+		throw(ERROR_LOADING_FONT);
 	}
 }
 
@@ -72,9 +84,9 @@ void MemoryGame::LeaderboardView::SetPlayerTextPositions()
 	}
 }
 
-void MemoryGame::LeaderboardView::UpdatePlayerText(int index, int newScore)
+void MemoryGame::LeaderboardView::UpdatePlayerText(int index, sf::String newString)
 {
-	// TODO:
+	this->_playerTexts[index].setString(newString);
 }
 
 void MemoryGame::LeaderboardView::ColorCurrentPlayerText(int index)
@@ -89,7 +101,7 @@ void MemoryGame::LeaderboardView::Render(sf::RenderWindow* window)
 {
 	window->draw(_leaderboardTitleText);
 
-	for (sf::Text playerText : _playerTexts)
+	for (auto playerText : _playerTexts)
 	{
 		window->draw(playerText);
 	}

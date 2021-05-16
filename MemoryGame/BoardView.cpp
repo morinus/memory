@@ -6,6 +6,12 @@
 #include "ErrorMessageStrings.h"
 #include "ResourceLocator.h"
 
+constexpr float STARTING_OFFSET_X = 300.f;
+constexpr float STARTING_OFFSET_Y = 100.f;
+constexpr float HORIZONTAL_OFFSET = 150.f;
+constexpr float VERTICAL_OFFSET = 200.f;
+constexpr float CARD_SCALE = 0.5f;
+
 
 MemoryGame::BoardView::BoardView()
 {
@@ -24,22 +30,31 @@ MemoryGame::BoardView::~BoardView()
 
 void MemoryGame::BoardView::Init(std::vector<MemoryGame::Card> cards)
 {
-	this->InitBoardBackground();
-	this->InitTextures();
-	this->InitCards(cards);
+	try
+	{
+		this->InitBoardBackground();
+		this->InitTextures();
+		this->InitCards(cards);
+	}
+	catch (std::string errorMessage)
+	{
+		std::cout << errorMessage << std::endl;
+	}
 
 	this->SetupCardButtons();
 }
 
-int MemoryGame::BoardView::GetClickedButtonIndex(sf::Vector2f mousePosition)
+int MemoryGame::BoardView::GetSelectedButtonIndex(sf::Vector2f mousePosition)
 {
 	for (int i = 0; i < this->_cardButtons.capacity() - 1; ++i)
 	{
 		auto button = this->_cardButtons[i];
+		auto isInteractible = button->GetIsInteractible();
+		auto isInsideBounds = button->GetImage().getGlobalBounds().contains(mousePosition);
 
-		if (button->GetImage().getGlobalBounds().contains(mousePosition))
+		if (isInteractible && isInsideBounds)
 		{
-			button->ChangeButtonState(MemoryGame::ButtonState::CLICKED);
+			button->SetIsInteractible(false);
 
 			return button->GetIndex();
 		}
@@ -48,11 +63,24 @@ int MemoryGame::BoardView::GetClickedButtonIndex(sf::Vector2f mousePosition)
 	return -1;
 }
 
+void MemoryGame::BoardView::DeselectButtons()
+{
+	for (auto button : this->_cardButtons)
+	{
+		button->SetIsInteractible(true);
+	}
+}
+
+void MemoryGame::BoardView::SetIsInteractible(int index, bool isInteractible)
+{
+	this->_cardButtons[index]->SetIsInteractible(isInteractible);
+}
+
 void MemoryGame::BoardView::InitBoardBackground()
 {
 	if (!_backgroundTexture.loadFromFile(BACKGROUND_TEXTURE_FILEPATH))
 	{
-		std::cout << ERROR_LOADING_TEXTURE << std::endl;
+		throw(ERROR_LOADING_TEXTURE);
 	}
 
 	_backgroundImage = sf::Sprite(_backgroundTexture);
@@ -63,35 +91,26 @@ void MemoryGame::BoardView::InitCards(std::vector<MemoryGame::Card> cards)
 	int i = 0;
 	for (auto card : cards)
 	{
-		CardType cardType = card.GetCardType();
-		Button* cardButton = new Button(&_cardBackTexture, this->GetTextureByCardType(cardType), i++);
+		auto cardType = card.GetCardType();
+		Button* cardButton = new Button(_cardBackTexture, this->GetTextureByCardType(cardType), i++);
 
 		this->_cardButtons.push_back(cardButton);
 	}
 
-	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+	unsigned int seed = std::chrono::system_clock::now().time_since_epoch().count();
 	std::shuffle(this->_cardButtons.begin(), this->_cardButtons.end(), std::default_random_engine(seed));
 }
 
 void MemoryGame::BoardView::SetupCardButtons()
 {
-	int offset = 150;
-
-	/*for (int i = 0; i < this->_cardButtons.capacity(); ++i)
-	{
-		this->_cardButtons[i]->SetPosition(sf::Vector2f(300 + offset * i, 100));
-		this->_cardButtons[i]->SetScale(sf::Vector2f(0.5, 0.5));
-	}*/
-
 	// Temporary solution, should be done inside a rectangle dynamically in algorithm pattern
-
 	int cardsPlaced = 0;
 	for (int j = 0; j < 3; j++)
 	{
 		for (int i = 0; i < 4; ++i)
 		{
-			this->_cardButtons[cardsPlaced]->SetPosition(sf::Vector2f(300 + offset * i, 100 + (200 * j)));
-			this->_cardButtons[cardsPlaced]->SetScale(sf::Vector2f(0.5, 0.5));
+			this->_cardButtons[cardsPlaced]->SetPosition(sf::Vector2f(STARTING_OFFSET_X + HORIZONTAL_OFFSET * i, STARTING_OFFSET_Y + (VERTICAL_OFFSET * j)));
+			this->_cardButtons[cardsPlaced]->SetScale(sf::Vector2f(CARD_SCALE, CARD_SCALE));
 			cardsPlaced++;
 		}
 	}
@@ -99,29 +118,13 @@ void MemoryGame::BoardView::SetupCardButtons()
 
 void MemoryGame::BoardView::InitTextures()
 {
-	if (!_monsterATexture.loadFromFile(MONSTER_A_TEXTURE_FILEPATH))
+	if (!_monsterATexture->loadFromFile(MONSTER_A_TEXTURE_FILEPATH)
+		|| !_monsterBTexture->loadFromFile(MONSTER_B_TEXTURE_FILEPATH)
+		|| !_monsterCTexture->loadFromFile(MONSTER_C_TEXTURE_FILEPATH)
+		|| !_monsterDTexture->loadFromFile(MONSTER_D_TEXTURE_FILEPATH)
+		|| !_cardBackTexture->loadFromFile(CARD_BACKGROUND_TEXTURE_FILEPATH))
 	{
-		std::cout << ERROR_LOADING_TEXTURE << std::endl;
-	}
-
-	if (!_monsterBTexture.loadFromFile(MONSTER_B_TEXTURE_FILEPATH))
-	{
-		std::cout << ERROR_LOADING_TEXTURE << std::endl;
-	}
-
-	if (!_monsterCTexture.loadFromFile(MONSTER_C_TEXTURE_FILEPATH))
-	{
-		std::cout << ERROR_LOADING_TEXTURE << std::endl;
-	}
-
-	if (!_monsterDTexture.loadFromFile(MONSTER_D_TEXTURE_FILEPATH))
-	{
-		std::cout << ERROR_LOADING_TEXTURE << std::endl;
-	}
-
-	if (!_cardBackTexture.loadFromFile(CARD_BACKGROUND_TEXTURE_FILEPATH))
-	{
-		std::cout << ERROR_LOADING_TEXTURE << std::endl;
+		throw(ERROR_LOADING_TEXTURE);
 	}
 }
 
@@ -130,13 +133,13 @@ sf::Texture* MemoryGame::BoardView::GetTextureByCardType(CardType cardType)
 	switch (cardType)
 	{
 	case CardType::MONSTER_A:
-		return &this->_monsterATexture;
+		return this->_monsterATexture;
 	case CardType::MONSTER_B:
-		return &this->_monsterBTexture;
+		return this->_monsterBTexture;
 	case CardType::MONSTER_C:
-		return &this->_monsterCTexture;
+		return this->_monsterCTexture;
 	case CardType::MONSTER_D:
-		return &this->_monsterDTexture;
+		return this->_monsterDTexture;
 	}
 }
 
