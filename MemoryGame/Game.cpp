@@ -74,7 +74,7 @@ void MemoryGame::Game::ProcessInput()
 		case sf::Event::Closed:
 			this->_window->close();
 			break;
-		case sf::Event::MouseButtonPressed:
+		case sf::Event::MouseButtonReleased:
 			if (event.mouseButton.button == sf::Mouse::Left)
 			{
 				sf::Vector2f mousePosition = this->_window->mapPixelToCoords(sf::Mouse::getPosition(*this->_window));

@@ -52,7 +52,7 @@ int MemoryGame::BoardView::GetSelectedButtonIndex(sf::Vector2f mousePosition)
 {
 	for (int i = 0; i < this->_cardButtons.capacity() - 1; ++i)
 	{
-		auto button = this->_cardButtons[i];
+		Button* button = this->_cardButtons[i];
 		auto isInteractible = button->GetIsInteractible();
 		auto isInsideBounds = button->GetImage().getGlobalBounds().contains(mousePosition);
 
@@ -77,7 +77,15 @@ void MemoryGame::BoardView::DeselectButtons()
 
 void MemoryGame::BoardView::SetIsInteractible(int index, bool isInteractible)
 {
-	this->_cardButtons[index]->SetIsInteractible(isInteractible);
+	for (auto button : this->_cardButtons)
+	{
+		if (button->GetIndex() == index)
+		{
+			button->SetIsInteractible(isInteractible);
+			break;
+		}
+
+	}
 }
 
 void MemoryGame::BoardView::InitBoardBackground()
