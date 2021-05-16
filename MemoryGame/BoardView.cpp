@@ -6,8 +6,8 @@
 #include "ErrorMessageStrings.h"
 #include "ResourceLocator.h"
 
-constexpr float STARTING_OFFSET_X = 300.f;
-constexpr float STARTING_OFFSET_Y = 100.f;
+constexpr float STARTING_OFFSET_X = 350.f;
+constexpr float STARTING_OFFSET_Y = 150.f;
 constexpr float HORIZONTAL_OFFSET = 150.f;
 constexpr float VERTICAL_OFFSET = 200.f;
 constexpr float CARD_SCALE = 0.5f;
