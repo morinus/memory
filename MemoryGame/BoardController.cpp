@@ -36,7 +36,7 @@ void MemoryGame::BoardController::InitPlayers(int numberOfPlayers)
 {
 	for (int i = 0; i < numberOfPlayers; ++i)
 	{
-		std::string playerName = "Player" + std::to_string(i);
+		std::string playerName = "Player" + std::to_string(i + 1);
 		Player player(playerName);
 
 		this->_players.push_back(player);
