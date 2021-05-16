@@ -9,6 +9,7 @@ MemoryGame::BoardController::BoardController()
 	this->_firstSelectedCardIndex = -1;
 	this->_secondSelectedCardIndex = -1;
 	this->_currentPlayerIndex = 0;
+	this->_isGameOver = false;
 }
 
 MemoryGame::BoardController::~BoardController()
@@ -71,6 +72,7 @@ void MemoryGame::BoardController::ProcessMouseClick(sf::Vector2f mousePosition)
 			_secondSelectedCardIndex = selectedCardIndex;
 
 			this->ProcessCurrentlySelectedCards();
+			this->CheckIfGameOver();
 		}
 		else
 		{
@@ -91,6 +93,9 @@ void MemoryGame::BoardController::ProcessCurrentlySelectedCards()
 	{
 		this->_players[_currentPlayerIndex].IncreaseScore();
 		this->UpdateCurrentPlayerText();
+		this->_cards[firstCardIndex].Solve();
+		this->_cards[secondCardIndex].Solve();
+		this->_isGameOver = this->CheckIfGameOver();
 	}
 	else
 	{
@@ -120,16 +125,31 @@ void MemoryGame::BoardController::UpdateCurrentPlayerText()
 
 void MemoryGame::BoardController::ChangePlayerTurn()
 {
-	auto numberOfPlayers = this->_players.capacity();
+	auto numberOfPlayers = this->_players.size();
 	auto isCurrentPlayerLastPlayer = _currentPlayerIndex == numberOfPlayers - 1;
 
 	this->_currentPlayerIndex = isCurrentPlayerLastPlayer ? 0 : _currentPlayerIndex + 1;
+}
+
+bool MemoryGame::BoardController::CheckIfGameOver()
+{
+	for (auto card : this->_cards)
+	{
+		if (!card.GetIsSolved())
+		{
+			return false;
+		}
+	}
+
+	return true;
 }
 
 void MemoryGame::BoardController::Render(sf::RenderWindow* window)
 {
 	this->_boardView.Render(window);
 	this->_leaderboardView.Render(window);
+
+	if (this->_isGameOver) {}
 }
 
 void MemoryGame::BoardController::Update(sf::Int32 elapsedTime)

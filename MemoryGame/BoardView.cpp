@@ -6,15 +6,15 @@
 #include "ErrorMessageStrings.h"
 #include "ResourceLocator.h"
 
-constexpr float STARTING_OFFSET_X = 350.f;
-constexpr float STARTING_OFFSET_Y = 150.f;
-constexpr float HORIZONTAL_OFFSET = 150.f;
-constexpr float VERTICAL_OFFSET = 200.f;
-constexpr float CARD_SCALE = 0.5f;
+constexpr float STARTING_OFFSET_X = 300.f;
+constexpr float STARTING_OFFSET_Y = 100.f;
+constexpr float HORIZONTAL_OFFSET = 125.f;
+constexpr float VERTICAL_OFFSET = 150.f;
+constexpr float CARD_SCALE = 0.35f;
 
 // TEMPORARY
-constexpr int ROWS = 3;
-constexpr int COLUMNS = 4;
+constexpr int ROWS = 4;
+constexpr int COLUMNS = 6;
 
 
 MemoryGame::BoardView::BoardView()
@@ -50,7 +50,7 @@ void MemoryGame::BoardView::Init(std::vector<MemoryGame::Card> cards)
 
 int MemoryGame::BoardView::GetSelectedButtonIndex(sf::Vector2f mousePosition)
 {
-	for (int i = 0; i < this->_cardButtons.capacity() - 1; ++i)
+	for (int i = 0; i < this->_cardButtons.size(); ++i)
 	{
 		Button* button = this->_cardButtons[i];
 		auto isInteractible = button->GetIsInteractible();

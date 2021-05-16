@@ -4,6 +4,7 @@
 #include "ErrorMessageStrings.h"
 #include "ResourceLocator.h"
 
+constexpr int MUSIC_VOLUME = 75;
 constexpr int MOUSECLICK_VOLUME = 50;
 
 
@@ -48,6 +49,7 @@ void MemoryGame::SoundController::InitMouseClickSound()
 
 void MemoryGame::SoundController::PlayMusic()
 {
+	_backgroundMusic.setVolume(MUSIC_VOLUME);
 	_backgroundMusic.play();
 }
 

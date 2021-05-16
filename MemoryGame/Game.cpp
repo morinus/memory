@@ -10,8 +10,8 @@ constexpr auto WINDOW_WIDTH = 1024;
 constexpr auto WINDOW_TITLE = "Memory Game";
 
 // Game Setup
-constexpr int NUMBER_OF_PLAYERS = 3;
-constexpr int NUMBER_OF_CARDS = 12;
+constexpr int NUMBER_OF_PLAYERS = 5;
+constexpr int NUMBER_OF_CARDS = 24;
 
 
 MemoryGame::Game::Game()
@@ -94,7 +94,6 @@ void MemoryGame::Game::Render()
 	this->_window->clear();
 
 	_boardController.Render(this->_window);
-	//_menuController.Render(this->_window);
 
 	this->_window->display();
 }

@@ -21,10 +21,12 @@ namespace MemoryGame
 		~Card();
 
 		CardType GetCardType() { return _cardType; }
+		void Solve() { _isSolved = true; }
+		bool GetIsSolved() { return _isSolved; }
 
 	private:
 		CardType _cardType;
-
+		bool _isSolved;
 	};
 }
 

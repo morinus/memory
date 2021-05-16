@@ -3,6 +3,7 @@
 
 #include "BoardView.h"
 #include "LeaderboardView.h"
+#include "MenuView.h"
 #include "Player.h"
 
 
@@ -26,6 +27,7 @@ namespace MemoryGame
 		void DeselectEverything();
 		void UpdateCurrentPlayerText();
 		void ChangePlayerTurn();
+		bool CheckIfGameOver();
 
 		BoardView _boardView;
 		LeaderboardView _leaderboardView;
@@ -36,6 +38,7 @@ namespace MemoryGame
 		int _firstSelectedCardIndex;
 		int _secondSelectedCardIndex;
 		int _currentPlayerIndex;
+		bool _isGameOver;
 	};
 }
 
