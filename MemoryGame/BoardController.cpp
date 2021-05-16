@@ -144,6 +144,11 @@ bool MemoryGame::BoardController::CheckIfGameOver()
 	return true;
 }
 
+void MemoryGame::BoardController::ResetGame()
+{
+
+}
+
 void MemoryGame::BoardController::Render(std::shared_ptr<sf::RenderWindow> window)
 {
 	this->_boardView.Render(window);

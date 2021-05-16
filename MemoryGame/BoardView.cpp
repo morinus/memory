@@ -77,6 +77,7 @@ void MemoryGame::BoardView::SetIsInteractible(int index, bool isInteractible)
 		if (button->GetIndex() == index)
 		{
 			button->SetIsInteractible(isInteractible);
+
 			break;
 		}
 

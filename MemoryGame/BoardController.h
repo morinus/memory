@@ -16,6 +16,7 @@ namespace MemoryGame
 
 		void InitBoard(int numberOfPlayers, int numberOfCards);
 		void ProcessMouseClick(sf::Vector2f mousePosition);
+		void ResetGame();
 		void Render(std::shared_ptr<sf::RenderWindow> window);
 		void Update(float elapsedTime);
 

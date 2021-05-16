@@ -59,9 +59,15 @@ void MemoryGame::Button::SetScale(sf::Vector2f newScale)
 
 void MemoryGame::Button::SetIsInteractible(bool isInteractible)
 {
-	this->_animationPlaying = true;
-
-	isInteractible ? this->_interactionPaused = true : this->_isInteractible = isInteractible;
+	if (isInteractible)
+	{
+		this->_interactionPaused = true;
+	}
+	else
+	{
+		this->_animationPlaying = true;
+		this->_isInteractible = isInteractible;
+	}
 }
 
 sf::Sprite MemoryGame::Button::GetImage()

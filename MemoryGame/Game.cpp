@@ -83,6 +83,12 @@ void MemoryGame::Game::ProcessInput()
 				this->_soundController.PlayMouseClickSound();
 			}
 			break;
+		case sf::Event::KeyReleased:
+			if (event.key.code == sf::Keyboard::R)
+			{
+				//this->_boardController.ResetGame();
+			}
+			break;
 		default:
 			break;
 		}
