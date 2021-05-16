@@ -25,6 +25,9 @@ namespace MemoryGame
 		bool GetIsInteractible() { return _isInteractible; }
 
 	private:
+		void ProcessTurnAnimation(float elapsedTime);
+		void ProcessInteractionPaused(float elapsedTime);
+
 		sf::Texture* _backTexture;
 		sf::Texture* _frontTexture;
 		sf::Sprite _frontSprite;
@@ -32,6 +35,11 @@ namespace MemoryGame
 
 		int _index;
 		bool _isInteractible;
+		bool _animationPlaying;
+		bool _interactionPaused;
+
+		float _pauseTimeElapsed;
+		float _animationTimeElapsed;
 	};
 }
 
