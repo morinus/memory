@@ -8,7 +8,8 @@ MemoryGame::Button::Button(sf::Texture* backTexture, sf::Texture* frontTexture, 
 	this->_index = index;
 	this->_isInteractible = true;
 
-	this->_image = sf::Sprite(*_backTexture);
+	this->_backSprite = sf::Sprite(*_backTexture);
+	this->_frontSprite = sf::Sprite(*_frontTexture);
 }
 
 MemoryGame::Button::~Button()
@@ -28,32 +29,34 @@ void MemoryGame::Button::Update(sf::Event e)
 
 void MemoryGame::Button::Render(sf::RenderWindow* window)
 {
-	window->draw(this->_image);
+	if (this->_isInteractible)
+	{
+		window->draw(this->_backSprite);
+	}
+	else
+	{
+		window->draw(this->_frontSprite);
+	}
 }
 
 void MemoryGame::Button::SetPosition(sf::Vector2f newPosition)
 {
-	this->_image.setPosition(newPosition);
+	this->_frontSprite.setPosition(newPosition);
+	this->_backSprite.setPosition(newPosition);
 }
 
 void MemoryGame::Button::SetScale(sf::Vector2f newScale)
 {
-	this->_image.setScale(newScale);
+	this->_frontSprite.setScale(newScale);
+	this->_backSprite.setScale(newScale);
 }
 
 void MemoryGame::Button::SetIsInteractible(bool isInteractible)
 {
-	isInteractible ? this->SetBackTexture() : this->SetFrontTexture();
-
 	this->_isInteractible = isInteractible;
 }
 
-void MemoryGame::Button::SetFrontTexture()
+sf::Sprite MemoryGame::Button::GetImage()
 {
-	this->_image.setTexture(*this->_frontTexture);
-}
-
-void MemoryGame::Button::SetBackTexture()
-{
-	this->_image.setTexture(*this->_backTexture);
+	return this->_isInteractible ? this->_backSprite : this->_frontSprite;
 }

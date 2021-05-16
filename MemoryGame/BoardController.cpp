@@ -49,7 +49,7 @@ void MemoryGame::BoardController::InitCards(int numberOfCards)
 
 	for (int i = 0; i < numberOfCardPairs; ++i)
 	{
-		CardType cardType = CardType(std::rand() % NUMBER_OF_CARD_TYPES);
+		CardType cardType = CardType(std::rand() % NUMBER_OF_CARD_TYPES + 1);
 		Card card(cardType);
 
 		// We need two of the same type of cards

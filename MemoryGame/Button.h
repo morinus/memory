@@ -20,17 +20,15 @@ namespace MemoryGame
 		void SetScale(sf::Vector2f newScale);
 		void SetIsInteractible(bool isInteractible);
 
-		sf::Sprite GetImage() { return _image; }
+		sf::Sprite GetImage();
 		int GetIndex() { return _index; }
 		bool GetIsInteractible() { return _isInteractible; }
 
 	private:
-		void SetFrontTexture();
-		void SetBackTexture();
-
 		sf::Texture* _backTexture;
 		sf::Texture* _frontTexture;
-		sf::Sprite _image;
+		sf::Sprite _frontSprite;
+		sf::Sprite _backSprite;
 
 		int _index;
 		bool _isInteractible;
