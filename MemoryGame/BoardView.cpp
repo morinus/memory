@@ -47,15 +47,15 @@ int MemoryGame::BoardView::GetSelectedButtonIndex(sf::Vector2f mousePosition)
 {
 	for (int i = 0; i < this->_cardButtons.size(); ++i)
 	{
-		std::shared_ptr<Button> button = this->_cardButtons[i];
-		auto isInteractible = button->GetIsInteractible();
-		auto isInsideBounds = button->GetImage().getGlobalBounds().contains(mousePosition);
+		std::shared_ptr<ButtonView> buttonView = this->_cardButtons[i];
+		auto isInteractible = buttonView->GetIsInteractible();
+		auto isInsideBounds = buttonView->GetImage().getGlobalBounds().contains(mousePosition);
 
 		if (isInteractible && isInsideBounds)
 		{
-			button->SetIsInteractible(false);
+			buttonView->SetIsInteractible(false);
 
-			return button->GetIndex();
+			return buttonView->GetIndex();
 		}
 	}
 
@@ -64,19 +64,19 @@ int MemoryGame::BoardView::GetSelectedButtonIndex(sf::Vector2f mousePosition)
 
 void MemoryGame::BoardView::DeselectButtons()
 {
-	for (auto button : this->_cardButtons)
+	for (auto buttonView : this->_cardButtons)
 	{
-		button->SetIsInteractible(true);
+		buttonView->SetIsInteractible(true);
 	}
 }
 
 void MemoryGame::BoardView::SetIsInteractible(int index, bool isInteractible)
 {
-	for (auto button : this->_cardButtons)
+	for (auto buttonView : this->_cardButtons)
 	{
-		if (button->GetIndex() == index)
+		if (buttonView->GetIndex() == index)
 		{
-			button->SetIsInteractible(isInteractible);
+			buttonView->SetIsInteractible(isInteractible);
 
 			break;
 		}
@@ -100,7 +100,7 @@ void MemoryGame::BoardView::InitCards(std::vector<MemoryGame::Card> cards)
 	for (auto card : cards)
 	{
 		auto cardType = card.GetCardType();
-		std::shared_ptr<Button> cardButton = std::make_shared<Button>(&_cardBackTexture, this->GetTextureByCardType(cardType), i++);
+		std::shared_ptr<ButtonView> cardButton = std::make_shared<ButtonView>(&_cardBackTexture, this->GetTextureByCardType(cardType), i++);
 
 		this->_cardButtons.push_back(cardButton);
 	}
@@ -163,8 +163,8 @@ void MemoryGame::BoardView::Render(std::shared_ptr<sf::RenderWindow> window)
 
 void MemoryGame::BoardView::Update(float elapsedTime)
 {
-	for (auto button : this->_cardButtons)
+	for (auto buttonView : this->_cardButtons)
 	{
-		button->Update(elapsedTime);
+		buttonView->Update(elapsedTime);
 	}
 }

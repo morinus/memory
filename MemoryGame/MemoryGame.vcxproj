@@ -135,7 +135,7 @@
   <ItemGroup>
     <ClCompile Include="BoardController.cpp" />
     <ClCompile Include="BoardView.cpp" />
-    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="ButtonView.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="LeaderboardView.cpp" />
@@ -146,7 +146,7 @@
   <ItemGroup>
     <ClInclude Include="BoardController.h" />
     <ClInclude Include="BoardView.h" />
-    <ClInclude Include="Button.h" />
+    <ClInclude Include="ButtonView.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="LeaderboardView.h" />

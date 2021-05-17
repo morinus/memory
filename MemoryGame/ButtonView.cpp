@@ -1,11 +1,11 @@
-#include "Button.h"
+#include "ButtonView.h"
 
 constexpr float PAUSE_TIME_IN_MILLISECONDS = 1000.f;
 constexpr float ANIMATION_DURATION_IN_MILLISECONDS = 250.f;
 constexpr float ANGLE_FULL_CIRCLE = 360.f;
 
 
-MemoryGame::Button::Button(sf::Texture* backTexture, sf::Texture* frontTexture, int index)
+MemoryGame::ButtonView::ButtonView(sf::Texture* backTexture, sf::Texture* frontTexture, int index)
 {
 	this->_backTexture = backTexture;
 	this->_frontTexture = frontTexture;
@@ -23,17 +23,17 @@ MemoryGame::Button::Button(sf::Texture* backTexture, sf::Texture* frontTexture, 
 	this->_frontSprite.setOrigin(this->_frontSprite.getTexture()->getSize().x / 2.f, this->_frontSprite.getTexture()->getSize().y / 2.f);
 }
 
-MemoryGame::Button::~Button()
+MemoryGame::ButtonView::~ButtonView()
 {
 
 }
 
-void MemoryGame::Button::Init(int index)
+void MemoryGame::ButtonView::Init(int index)
 {
 	this->_index = index;
 }
 
-void MemoryGame::Button::Render(std::shared_ptr<sf::RenderWindow> window)
+void MemoryGame::ButtonView::Render(std::shared_ptr<sf::RenderWindow> window)
 {
 	if (this->_isInteractible)
 	{
@@ -45,19 +45,19 @@ void MemoryGame::Button::Render(std::shared_ptr<sf::RenderWindow> window)
 	}
 }
 
-void MemoryGame::Button::SetPosition(sf::Vector2f newPosition)
+void MemoryGame::ButtonView::SetPosition(sf::Vector2f newPosition)
 {
 	this->_frontSprite.setPosition(newPosition);
 	this->_backSprite.setPosition(newPosition);
 }
 
-void MemoryGame::Button::SetScale(sf::Vector2f newScale)
+void MemoryGame::ButtonView::SetScale(sf::Vector2f newScale)
 {
 	this->_frontSprite.setScale(newScale);
 	this->_backSprite.setScale(newScale);
 }
 
-void MemoryGame::Button::SetIsInteractible(bool isInteractible)
+void MemoryGame::ButtonView::SetIsInteractible(bool isInteractible)
 {
 	if (isInteractible)
 	{
@@ -70,12 +70,12 @@ void MemoryGame::Button::SetIsInteractible(bool isInteractible)
 	}
 }
 
-sf::Sprite MemoryGame::Button::GetImage()
+sf::Sprite MemoryGame::ButtonView::GetImage()
 {
 	return this->_isInteractible ? this->_backSprite : this->_frontSprite;
 }
 
-void MemoryGame::Button::ProcessTurnAnimation(float elapsedTime)
+void MemoryGame::ButtonView::ProcessTurnAnimation(float elapsedTime)
 {
 	this->_animationTimeElapsed += elapsedTime;
 
@@ -99,7 +99,7 @@ void MemoryGame::Button::ProcessTurnAnimation(float elapsedTime)
 	}
 }
 
-void MemoryGame::Button::ProcessInteractionPaused(float elapsedTime)
+void MemoryGame::ButtonView::ProcessInteractionPaused(float elapsedTime)
 {
 	this->_pauseTimeElapsed += elapsedTime;
 	if (this->_pauseTimeElapsed >= PAUSE_TIME_IN_MILLISECONDS)
@@ -110,7 +110,7 @@ void MemoryGame::Button::ProcessInteractionPaused(float elapsedTime)
 	}
 }
 
-void MemoryGame::Button::Update(float elapsedTime)
+void MemoryGame::ButtonView::Update(float elapsedTime)
 {
 	if (this->_animationPlaying) this->ProcessTurnAnimation(elapsedTime);
 	if (this->_interactionPaused) this->ProcessInteractionPaused(elapsedTime);

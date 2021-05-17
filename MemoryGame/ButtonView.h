@@ -1,16 +1,16 @@
-#ifndef BUTTON_H
-#define BUTTON_H
+#ifndef BUTTONVIEW_H
+#define BUTTONVIEW_H
 
 #include "SFML/Graphics.hpp"
 
 
 namespace MemoryGame
 {
-	class Button
+	class ButtonView
 	{
 	public:
-		Button(sf::Texture* backTexture, sf::Texture* frontTexture, int index);
-		~Button();
+		ButtonView(sf::Texture* backTexture, sf::Texture* frontTexture, int index);
+		~ButtonView();
 
 		void Init(int index);
 		void Update(float elapsedTime);
@@ -43,4 +43,4 @@ namespace MemoryGame
 	};
 }
 
-#endif // BUTTON_H
+#endif // BUTTONVIEW_H

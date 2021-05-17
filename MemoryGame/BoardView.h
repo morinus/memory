@@ -36,7 +36,7 @@ namespace MemoryGame
 		sf::Texture _monsterDTexture;
 		sf::Texture _cardBackTexture;
 
-		std::vector<std::shared_ptr<Button>> _cardButtons;
+		std::vector<std::shared_ptr<ButtonView>> _cardButtons;
 
 		sf::Texture _backgroundTexture;
 		sf::Sprite _backgroundImage;
