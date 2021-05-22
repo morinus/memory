@@ -6,4 +6,4 @@
 #define ERROR_LOADING_AUDIO_FILE "Error loading music file!"
 #define ERROR_LOADING_WINDOW_ICON "Error loading window icon!"
 
-#endif
+#endif // ERRORMESSAGESTRINGS_H

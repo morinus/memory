@@ -141,6 +141,7 @@
     <ClCompile Include="LeaderboardView.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="SoundController.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,8 +150,10 @@
     <ClInclude Include="ButtonView.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameScene.h" />
     <ClInclude Include="LeaderboardView.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayScene.h" />
     <ClInclude Include="ResourceLocator.h" />
     <ClInclude Include="SoundController.h" />
     <ClInclude Include="ErrorMessageStrings.h" />

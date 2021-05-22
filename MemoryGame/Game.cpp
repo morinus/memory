@@ -9,10 +9,6 @@ constexpr auto WINDOW_HEIGHT = 800;
 constexpr auto WINDOW_WIDTH = 1024;
 constexpr auto WINDOW_TITLE = "Memory Game";
 
-// Game Setup
-constexpr int NUMBER_OF_PLAYERS = 5;
-constexpr int NUMBER_OF_CARDS = 24;
-
 
 MemoryGame::Game::Game()
 {
@@ -29,7 +25,7 @@ MemoryGame::Game::Game()
 
 MemoryGame::Game::~Game()
 {
-
+	delete this->_currentScene;
 }
 
 void MemoryGame::Game::InitWindow()
@@ -47,10 +43,9 @@ void MemoryGame::Game::InitWindow()
 
 void MemoryGame::Game::InitGame()
 {
+	this->_currentScene = &this->_playScene;
 	this->_soundController.PlayMusic();
-
-	// Temporary
-	this->_boardController.InitBoard(NUMBER_OF_PLAYERS, NUMBER_OF_CARDS);
+	this->_currentScene->Init();
 }
 
 void MemoryGame::Game::Play()
@@ -79,14 +74,8 @@ void MemoryGame::Game::ProcessInput()
 			{
 				sf::Vector2f mousePosition = this->_window->mapPixelToCoords(sf::Mouse::getPosition(*this->_window));
 
-				this->_boardController.ProcessMouseClick(mousePosition);
+				this->_currentScene->ProcessMouseClick(mousePosition);
 				this->_soundController.PlayMouseClickSound();
-			}
-			break;
-		case sf::Event::KeyReleased:
-			if (event.key.code == sf::Keyboard::R)
-			{
-				//this->_boardController.ResetGame();
 			}
 			break;
 		default:
@@ -99,7 +88,7 @@ void MemoryGame::Game::Render()
 {
 	this->_window->clear();
 
-	_boardController.Render(this->_window);
+	this->_currentScene->Render(this->_window);
 
 	this->_window->display();
 }
@@ -108,5 +97,5 @@ void MemoryGame::Game::Update()
 {
 	auto elapsedTime = this->_clock.restart().asMilliseconds();
 
-	_boardController.Update((float)elapsedTime);
+	this->_currentScene->Update((float)elapsedTime);
 }
