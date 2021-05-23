@@ -17,7 +17,9 @@ namespace MemoryGame
 	private:
 		void InitBoardBackground();
 		void InitButtons();
+		void InitButton(sf::Sprite* button, sf::Vector2f position, sf::Vector2f scale);
 		void InitTexts();
+		void InitText(sf::Text* text, std::string textString, sf::Vector2f position, int characterSize, sf::Color fillColor = sf::Color::White);
 
 		sf::Texture _backgroundTexture;
 		sf::Texture _buttonArrowTexture;

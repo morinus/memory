@@ -58,21 +58,20 @@ void MemoryGame::MenuView::InitButtons()
 		throw(ERROR_LOADING_TEXTURE);
 	}
 
-	this->_playersLeftButtonSprite = sf::Sprite(_buttonArrowTexture);
-	this->_playersLeftButtonSprite.setPosition(NUMBER_OF_PLAYERS_OFFSET_X - BUTTON_OFFSET_X, NUMBER_OF_PLAYERS_OFFSET_Y);
-	this->_playersLeftButtonSprite.setScale(sf::Vector2f(-0.1f, 0.1f));
+	this->InitButton(&this->_playersLeftButtonSprite, sf::Vector2f(NUMBER_OF_PLAYERS_OFFSET_X - BUTTON_OFFSET_X, NUMBER_OF_PLAYERS_OFFSET_Y), sf::Vector2f(-0.1f, 0.1f));
 
-	this->_playersRightButtonSprite = sf::Sprite(_buttonArrowTexture);
-	this->_playersRightButtonSprite.setPosition(NUMBER_OF_PLAYERS_OFFSET_X + BUTTON_OFFSET_X * 2, NUMBER_OF_PLAYERS_OFFSET_Y);
-	this->_playersRightButtonSprite.setScale(sf::Vector2f(0.1f, 0.1f));
+	this->InitButton(&this->_playersRightButtonSprite, sf::Vector2f(NUMBER_OF_PLAYERS_OFFSET_X + BUTTON_OFFSET_X * 2, NUMBER_OF_PLAYERS_OFFSET_Y), sf::Vector2f(0.1f, 0.1f));
 
-	this->_cardsLeftButtonSprite = sf::Sprite(_buttonArrowTexture);
-	this->_cardsLeftButtonSprite.setPosition(NUMBER_OF_CARDS_OFFSET_X - BUTTON_OFFSET_X, NUMBER_OF_CARDS_OFFSET_Y);
-	this->_cardsLeftButtonSprite.setScale(sf::Vector2f(-0.1f, 0.1f));
+	this->InitButton(&this->_cardsLeftButtonSprite, sf::Vector2f(NUMBER_OF_CARDS_OFFSET_X - BUTTON_OFFSET_X, NUMBER_OF_CARDS_OFFSET_Y), sf::Vector2f(-0.1f, 0.1f));
 
-	this->_cardsRightButtonSprite = sf::Sprite(_buttonArrowTexture);
-	this->_cardsRightButtonSprite.setPosition(NUMBER_OF_CARDS_OFFSET_X + BUTTON_OFFSET_X * 2, NUMBER_OF_CARDS_OFFSET_Y);
-	this->_cardsRightButtonSprite.setScale(sf::Vector2f(0.1f, 0.1f));
+	this->InitButton(&this->_cardsRightButtonSprite, sf::Vector2f(NUMBER_OF_CARDS_OFFSET_X + BUTTON_OFFSET_X * 2, NUMBER_OF_CARDS_OFFSET_Y), sf::Vector2f(0.1f, 0.1f));
+}
+
+void MemoryGame::MenuView::InitButton(sf::Sprite* button, sf::Vector2f position, sf::Vector2f scale)
+{
+	*button = sf::Sprite(this->_buttonArrowTexture);
+	button->setPosition(position);
+	button->setScale(scale);
 }
 
 void MemoryGame::MenuView::InitTexts()
@@ -82,28 +81,22 @@ void MemoryGame::MenuView::InitTexts()
 		throw(ERROR_LOADING_FONT);
 	}
 
-	this->_sceneTitleText.setString(std::string(MENU_TITLE_TEXT));
-	this->_sceneTitleText.setFont(this->_font);
-	this->_sceneTitleText.setPosition(sf::Vector2f(TITLE_TEXT_OFFSET_X, TITLE_TEXT_OFFSET_Y));
-	this->_sceneTitleText.setCharacterSize(TITLE_FONT_SIZE);
+	this->InitText(&this->_sceneTitleText, std::string(MENU_TITLE_TEXT), sf::Vector2f(TITLE_TEXT_OFFSET_X, TITLE_TEXT_OFFSET_Y), TITLE_FONT_SIZE);
 
-	this->_numberOfPlayersText.setString(std::to_string(NUMBER_OF_PLAYERS_INIT_NUMBER));
-	this->_numberOfPlayersText.setFont(this->_font);
-	this->_numberOfPlayersText.setPosition(sf::Vector2f(NUMBER_OF_PLAYERS_OFFSET_X, NUMBER_OF_PLAYERS_OFFSET_Y));
-	this->_numberOfPlayersText.setCharacterSize(NUMBER_FONT_SIZE);
-	this->_numberOfPlayersText.setFillColor(sf::Color::Green);
+	this->InitText(&this->_numberOfPlayersText, std::to_string(NUMBER_OF_PLAYERS_INIT_NUMBER), sf::Vector2f(NUMBER_OF_PLAYERS_OFFSET_X, NUMBER_OF_PLAYERS_OFFSET_Y), NUMBER_FONT_SIZE, sf::Color::Green);
 
-	this->_numberOfCardsText.setString(std::to_string(NUMBER_OF_CARDS_INIT_NUMBER));
-	this->_numberOfCardsText.setFont(this->_font);
-	this->_numberOfCardsText.setPosition(sf::Vector2f(NUMBER_OF_CARDS_OFFSET_X, NUMBER_OF_CARDS_OFFSET_Y));
-	this->_numberOfCardsText.setCharacterSize(NUMBER_FONT_SIZE);
-	this->_numberOfCardsText.setFillColor(sf::Color::Green);
+	this->InitText(&this->_numberOfCardsText, std::to_string(NUMBER_OF_CARDS_INIT_NUMBER), sf::Vector2f(NUMBER_OF_CARDS_OFFSET_X, NUMBER_OF_CARDS_OFFSET_Y), NUMBER_FONT_SIZE, sf::Color::Green);
 
-	this->_playText.setString(std::string(PLAY_BUTTON_TEXT));
-	this->_playText.setFont(this->_font);
-	this->_playText.setPosition(sf::Vector2f(PLAY_BUTTON_OFFSET_X, PLAY_BUTTON_OFFSET_Y));
-	this->_playText.setCharacterSize(PLAY_BUTTON_FONT_SIZE);
-	this->_playText.setFillColor(sf::Color::Green);
+	this->InitText(&_playText, std::string(PLAY_BUTTON_TEXT), sf::Vector2f(PLAY_BUTTON_OFFSET_X, PLAY_BUTTON_OFFSET_Y), PLAY_BUTTON_FONT_SIZE, sf::Color::Green);
+}
+
+void MemoryGame::MenuView::InitText(sf::Text* text, std::string textString, sf::Vector2f position, int characterSize, sf::Color fillColor)
+{
+	text->setString(textString);
+	text->setFont(this->_font);
+	text->setPosition(position);
+	text->setCharacterSize(characterSize);
+	text->setFillColor(fillColor);
 }
 
 void MemoryGame::MenuView::Render(std::shared_ptr<sf::RenderWindow> window)
@@ -122,5 +115,5 @@ void MemoryGame::MenuView::Render(std::shared_ptr<sf::RenderWindow> window)
 
 void MemoryGame::MenuView::Update(float elapsedTime)
 {
-
+	//
 }
