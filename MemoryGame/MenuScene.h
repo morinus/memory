@@ -1,7 +1,7 @@
 #ifndef MENUSCENE_H
 #define MENUSCENE_H
 
-#include "BoardController.h"
+#include "MenuController.h"
 #include "GameScene.h"
 
 class Game;
@@ -20,6 +20,7 @@ namespace MemoryGame
 		virtual void ProcessMouseClick(sf::Vector2f mousePosition) override;
 
 	private:
+		MenuController _menuController;
 
 	};
 }

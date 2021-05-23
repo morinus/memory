@@ -43,7 +43,7 @@ void MemoryGame::Game::InitWindow()
 
 void MemoryGame::Game::InitGame()
 {
-	this->_currentScene = &this->_playScene;
+	this->_currentScene = &this->_menuScene;
 	this->_soundController.PlayMusic();
 	this->_currentScene->Init();
 }
