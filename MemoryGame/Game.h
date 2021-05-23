@@ -1,3 +1,6 @@
+#ifndef GAME_H
+#define GAME_H
+
 #include "SFML/Graphics.hpp"
 
 #include "MenuScene.h"
@@ -48,3 +51,5 @@ namespace MemoryGame
 		std::shared_ptr<GameSettings> _gameSettings;
 	};
 }
+
+#endif // GAME_H
