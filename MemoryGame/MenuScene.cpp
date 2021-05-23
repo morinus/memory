@@ -11,9 +11,10 @@ MemoryGame::MenuScene::~MenuScene()
 
 }
 
-void MemoryGame::MenuScene::Init(std::shared_ptr<GameSettings> gameSettings)
+void MemoryGame::MenuScene::Init(std::shared_ptr<GameSettings> gameSettings, std::function<void(GameState)> changeGameStateDelegate)
 {
 	this->_menuController.InitMenu(gameSettings);
+	this->_menuController.SetChangeGameStateDelegate(changeGameStateDelegate);
 }
 
 void MemoryGame::MenuScene::Update(float elapsedTime)

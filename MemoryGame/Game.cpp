@@ -50,7 +50,7 @@ void MemoryGame::Game::InitGame()
 	this->_currentScene = &this->_menuScene;
 	this->_soundController.PlayMusic();
 	this->_gameSettings = std::make_shared<GameSettings>(INITIAL_NUMBER_OF_PLAYERS, INITIAL_NUMBER_OF_CARDS);
-	this->_currentScene->Init(this->_gameSettings);
+	this->_currentScene->Init(this->_gameSettings, [this](GameState gameState) { ChangeGameState(gameState); });
 }
 
 void MemoryGame::Game::Play()
@@ -71,6 +71,7 @@ void MemoryGame::Game::ChangeGameState(GameState newGameState)
 		this->_currentScene = &this->_menuScene;
 		break;
 	case GameState::PLAY_SCENE:
+		this->_playScene.Init(this->_gameSettings, [this](GameState gameState) { ChangeGameState(gameState); });
 		this->_currentScene = &this->_playScene;
 		break;
 	}

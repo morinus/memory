@@ -3,6 +3,9 @@
 
 #include "MenuView.h"
 #include "GameSettings.h"
+#include "GameState.h"
+
+#include <functional>
 
 
 namespace MemoryGame
@@ -17,6 +20,7 @@ namespace MemoryGame
 		void Render(std::shared_ptr<sf::RenderWindow> window);
 		void Update(float elapsedTime);
 		void ProcessMouseClick(sf::Vector2f mousePosition);
+		void SetChangeGameStateDelegate(std::function<void(GameState)> changeGameStateDelegate);
 
 	private:
 		void IncreaseNumberOfPlayers();
@@ -28,6 +32,7 @@ namespace MemoryGame
 		MenuView _menuView;
 
 		std::shared_ptr<GameSettings> _gameSettings;
+		std::function<void(GameState)> _changeGameStateDelegate;
 	};
 }
 

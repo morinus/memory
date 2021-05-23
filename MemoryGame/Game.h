@@ -10,16 +10,10 @@
 #include "SoundController.h"
 
 #include "GameSettings.h"
+#include "GameState.h"
 
 namespace MemoryGame
 {
-	enum GameState
-	{
-		MENU_SCENE = 1,
-		PLAY_SCENE = 2,
-		LEADERBOARD_SCENE = 3
-	};
-
 	class Game
 	{
 	public:

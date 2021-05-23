@@ -4,6 +4,7 @@
 #include "MenuController.h"
 #include "GameScene.h"
 
+class Game;
 
 namespace MemoryGame
 {
@@ -13,7 +14,7 @@ namespace MemoryGame
 		MenuScene();
 		~MenuScene();
 
-		virtual void Init(std::shared_ptr<GameSettings> gameSettings) override;
+		virtual void Init(std::shared_ptr<GameSettings> gameSettings, std::function<void(GameState)> changeGameStateDelegate) override;
 		virtual void Update(float elapsedTime) override;
 		virtual void Render(std::shared_ptr<sf::RenderWindow> window) override;
 		virtual void ProcessMouseClick(sf::Vector2f mousePosition) override;

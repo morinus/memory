@@ -128,5 +128,8 @@
     <ClInclude Include="GameSettings.h">
       <Filter>Header Files\Model</Filter>
     </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Header Files\Model</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

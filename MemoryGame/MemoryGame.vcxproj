@@ -156,6 +156,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GameSettings.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="LeaderboardView.h" />
     <ClInclude Include="MenuController.h" />
     <ClInclude Include="MenuScene.h" />

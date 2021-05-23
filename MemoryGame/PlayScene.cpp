@@ -1,8 +1,5 @@
+#include "Game.h"
 #include "PlayScene.h"
-
-// Game Setup
-constexpr int NUMBER_OF_PLAYERS = 5;
-constexpr int NUMBER_OF_CARDS = 24;
 
 
 MemoryGame::PlayScene::PlayScene()
@@ -15,9 +12,9 @@ MemoryGame::PlayScene::~PlayScene()
 
 }
 
-void MemoryGame::PlayScene::Init(std::shared_ptr<GameSettings> gameSettings)
+void MemoryGame::PlayScene::Init(std::shared_ptr<GameSettings> gameSettings, std::function<void(GameState)> changeGameStateDelegate)
 {
-	this->_boardController.InitBoard(NUMBER_OF_PLAYERS, NUMBER_OF_CARDS);
+	this->_boardController.InitBoard(gameSettings->NumberOfPlayers, gameSettings->NumberOfCards);
 }
 
 void MemoryGame::PlayScene::Update(float elapsedTime)

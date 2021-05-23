@@ -63,6 +63,11 @@ void MemoryGame::MenuController::ProcessMouseClick(sf::Vector2f mousePosition)
 	}
 }
 
+void MemoryGame::MenuController::SetChangeGameStateDelegate(std::function<void(GameState)> changeGameStateDelegate)
+{
+	this->_changeGameStateDelegate = changeGameStateDelegate;
+}
+
 void MemoryGame::MenuController::IncreaseNumberOfPlayers()
 {
 	this->_gameSettings->NumberOfPlayers++;
@@ -95,5 +100,5 @@ void MemoryGame::MenuController::DecreaseNumberOfCards()
 
 void MemoryGame::MenuController::ProcessPlayGameAction()
 {
-
+	this->_changeGameStateDelegate(GameState::PLAY_SCENE);
 }

@@ -161,3 +161,8 @@ void MemoryGame::BoardController::Update(float elapsedTime)
 {
 	this->_boardView.Update(elapsedTime);
 }
+
+void MemoryGame::BoardController::SetChangeGameStateDelegate(std::function<void(GameState)> changeGameStateDelegate)
+{
+	this->_changeGameStateDelegate = changeGameStateDelegate;
+}

@@ -4,6 +4,9 @@
 #include "BoardView.h"
 #include "LeaderboardView.h"
 #include "Player.h"
+#include "GameState.h"
+
+#include <functional>
 
 
 namespace MemoryGame
@@ -19,6 +22,7 @@ namespace MemoryGame
 		void ResetGame();
 		void Render(std::shared_ptr<sf::RenderWindow> window);
 		void Update(float elapsedTime);
+		void SetChangeGameStateDelegate(std::function<void(GameState)> changeGameStateDelegate);
 
 	private:
 		void InitPlayers(int numberOfPlayers);
@@ -39,6 +43,8 @@ namespace MemoryGame
 		int _secondSelectedCardIndex;
 		int _currentPlayerIndex;
 		bool _isGameOver;
+
+		std::function<void(GameState)> _changeGameStateDelegate;
 	};
 }
 
