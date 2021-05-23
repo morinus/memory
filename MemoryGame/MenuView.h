@@ -16,9 +16,23 @@ namespace MemoryGame
 
 	private:
 		void InitBoardBackground();
+		void InitButtons();
+		void InitTexts();
 
 		sf::Texture _backgroundTexture;
-		sf::Sprite _backgroundImage;
+		sf::Texture _buttonArrowTexture;
+		sf::Sprite _backgroundSprite;
+		sf::Sprite _playersLeftButtonSprite;
+		sf::Sprite _playersRightButtonSprite;
+		sf::Sprite _cardsLeftButtonSprite;
+		sf::Sprite _cardsRightButtonSprite;
+
+		sf::Font _font;
+
+		sf::Text _sceneTitleText;
+		sf::Text _numberOfPlayersText;
+		sf::Text _numberOfCardsText;
+		sf::Text _playText;
 	};
 }
 

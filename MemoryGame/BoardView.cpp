@@ -91,7 +91,7 @@ void MemoryGame::BoardView::InitBoardBackground()
 		throw(ERROR_LOADING_TEXTURE);
 	}
 
-	_backgroundImage = sf::Sprite(_backgroundTexture);
+	_backgroundSprite = sf::Sprite(_backgroundTexture);
 }
 
 void MemoryGame::BoardView::InitCards(std::vector<MemoryGame::Card> cards)
@@ -153,7 +153,7 @@ sf::Texture* MemoryGame::BoardView::GetTextureByCardType(CardType cardType)
 
 void MemoryGame::BoardView::Render(std::shared_ptr<sf::RenderWindow> window)
 {
-	window->draw(_backgroundImage);
+	window->draw(_backgroundSprite);
 
 	for (auto button : this->_cardButtons)
 	{

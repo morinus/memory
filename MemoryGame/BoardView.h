@@ -39,7 +39,7 @@ namespace MemoryGame
 		std::vector<std::shared_ptr<ButtonView>> _cardButtons;
 
 		sf::Texture _backgroundTexture;
-		sf::Sprite _backgroundImage;
+		sf::Sprite _backgroundSprite;
 	};
 }
 
