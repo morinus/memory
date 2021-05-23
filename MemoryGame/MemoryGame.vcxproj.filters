@@ -66,6 +66,9 @@
     <ClCompile Include="PlayScene.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
+    <ClCompile Include="MenuScene.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoardController.h">
@@ -102,6 +105,9 @@
       <Filter>Header Files\Model</Filter>
     </ClInclude>
     <ClInclude Include="PlayScene.h">
+      <Filter>Header Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScene.h">
       <Filter>Header Files\Model</Filter>
     </ClInclude>
   </ItemGroup>

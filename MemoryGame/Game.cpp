@@ -58,6 +58,19 @@ void MemoryGame::Game::Play()
 	}
 }
 
+void MemoryGame::Game::ChangeGameState(GameState newGameState)
+{
+	switch (newGameState)
+	{
+	case GameState::MENU_SCENE:
+		this->_currentScene = &this->_menuScene;
+		break;
+	case GameState::PLAY_SCENE:
+		this->_currentScene = &this->_playScene;
+		break;
+	}
+}
+
 void MemoryGame::Game::ProcessInput()
 {
 	sf::Event event;

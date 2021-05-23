@@ -1,5 +1,6 @@
 #include "SFML/Graphics.hpp"
 
+#include "MenuScene.h"
 #include "PlayScene.h"
 
 #include "BoardController.h"
@@ -22,6 +23,7 @@ namespace MemoryGame
 		~Game();
 
 		void Play();
+		void ChangeGameState(GameState newGameState);
 		std::shared_ptr<sf::RenderWindow> GetWindow() { return _window; }
 
 	private:
@@ -36,6 +38,7 @@ namespace MemoryGame
 
 		GameScene* _currentScene;
 		PlayScene _playScene;
+		MenuScene _menuScene;
 
 		GameState _currentGameState;
 		std::shared_ptr<sf::RenderWindow> _window;
