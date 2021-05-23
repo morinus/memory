@@ -9,6 +9,7 @@ constexpr int PLAYER_TEXT_SIZE = 30;
 constexpr int PLAYER_TEXT_OFFSET = 55;
 constexpr int PLAYER_TEXT_OFFSET_X = 35;
 constexpr int PLAYER_TEXT_OFFSET_Y = 100;
+constexpr int PLAYER_TEXT_BOTTOM_BORDER_Y = 660;
 constexpr int LEADERBOARD_TITLE_TEXT_OFFSET_X = 20;
 constexpr int LEADERBOARD_TITLE_TEXT_OFFSET_Y = 25;
 
@@ -73,14 +74,29 @@ void MemoryGame::LeaderboardView::InitLeaderboardTitleText()
 void MemoryGame::LeaderboardView::SetPlayerTextPositions()
 {
 	int offset = 0;
-	for (auto &playerText : _playerTexts)
+	float playerTextHeight = this->_playerTexts[0].getLocalBounds().height + PLAYER_TEXT_OFFSET;
+	int totalPlayers = this->_playerTexts.size();
+	float leaderBoardHeight = PLAYER_TEXT_BOTTOM_BORDER_Y;
+	int heightOfNewPlayerText = leaderBoardHeight / totalPlayers;
+	float scaleFactor = heightOfNewPlayerText / playerTextHeight;
+
+
+	for (auto &playerText : this->_playerTexts)
 	{
 		float x = playerText.getPosition().x;
 		float y = playerText.getPosition().y;
 
 		playerText.setPosition(x, y - offset);
 
-		offset -= PLAYER_TEXT_OFFSET;
+		if (scaleFactor < 1)
+		{
+			playerText.setScale(scaleFactor, scaleFactor);
+			offset -= PLAYER_TEXT_OFFSET * scaleFactor;
+		}
+		else
+		{
+			offset -= PLAYER_TEXT_OFFSET;
+		}
 	}
 }
 
