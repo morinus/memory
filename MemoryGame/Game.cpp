@@ -25,7 +25,7 @@ MemoryGame::Game::Game()
 
 MemoryGame::Game::~Game()
 {
-	delete this->_currentScene;
+
 }
 
 void MemoryGame::Game::InitWindow()
