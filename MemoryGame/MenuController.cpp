@@ -5,18 +5,11 @@ constexpr int MINIMUM_NUMBER_OF_CARDS = 2;
 constexpr int INCREMENTAL_STEP_FOR_CARDS = 2;
 
 
-enum MenuViewButton
-{
-	PLAYERS_LEFT_BUTTON = 0,
-	PLAYERS_RIGHT_BUTTON = 1,
-	CARDS_LEFT_BUTTON = 2,
-	CARDS_RIGHT_BUTTON = 3,
-	PLAY_BUTTON = 4
-};
-
 MemoryGame::MenuController::MenuController()
 {
-
+	this->_menuView.SetChangeNumberOfPlayersDelegate([this](bool isIncreased) { ChangeNumberOfPlayers(isIncreased); });
+	this->_menuView.SetChangeNumberOfCardsDelegate([this](bool isIncreased) { ChangeNumberOfCards(isIncreased); });
+	this->_menuView.SetChangePlayButtonDelegate([this]() { ProcessPlayGameAction(); });
 }
 
 MemoryGame::MenuController::~MenuController()
@@ -41,26 +34,7 @@ void MemoryGame::MenuController::Update(float elapsedTime)
 
 void MemoryGame::MenuController::ProcessMouseClick(sf::Vector2f mousePosition)
 {
-	auto menuViewButtonType = this->_menuView.GetSelectedButtonType(mousePosition);
-
-	switch (menuViewButtonType)
-	{
-	case MenuViewButton::PLAYERS_LEFT_BUTTON:
-		this->DecreaseNumberOfPlayers();
-		break;
-	case MenuViewButton::PLAYERS_RIGHT_BUTTON:
-		this->IncreaseNumberOfPlayers();
-		break;
-	case MenuViewButton::CARDS_LEFT_BUTTON:
-		this->DecreaseNumberOfCards();
-		break;
-	case MenuViewButton::CARDS_RIGHT_BUTTON:
-		this->IncreaseNumberOfCards();
-		break;
-	case MenuViewButton::PLAY_BUTTON:
-		this->ProcessPlayGameAction();
-		break;
-	}
+	this->_menuView.ProcessMouseClick(mousePosition);
 }
 
 void MemoryGame::MenuController::SetChangeGameStateDelegate(std::function<void(GameState)> changeGameStateDelegate)
@@ -68,33 +42,37 @@ void MemoryGame::MenuController::SetChangeGameStateDelegate(std::function<void(G
 	this->_changeGameStateDelegate = changeGameStateDelegate;
 }
 
-void MemoryGame::MenuController::IncreaseNumberOfPlayers()
+void MemoryGame::MenuController::ChangeNumberOfPlayers(bool isIncreased)
 {
-	this->_gameSettings->NumberOfPlayers++;
-	this->_menuView.UpdateNumberOfPlayers(this->_gameSettings->NumberOfPlayers);
-}
-
-void MemoryGame::MenuController::DecreaseNumberOfPlayers()
-{
-	if (this->_gameSettings->NumberOfPlayers > MINIMUM_NUMBER_OF_PLAYERS)
+	if (isIncreased)
 	{
-		this->_gameSettings->NumberOfPlayers--;
+		this->_gameSettings->NumberOfPlayers++;
 		this->_menuView.UpdateNumberOfPlayers(this->_gameSettings->NumberOfPlayers);
+	}
+	else
+	{
+		if (this->_gameSettings->NumberOfPlayers > MINIMUM_NUMBER_OF_PLAYERS)
+		{
+			this->_gameSettings->NumberOfPlayers--;
+			this->_menuView.UpdateNumberOfPlayers(this->_gameSettings->NumberOfPlayers);
+		}
 	}
 }
 
-void MemoryGame::MenuController::IncreaseNumberOfCards()
+void MemoryGame::MenuController::ChangeNumberOfCards(bool isIncreased)
 {
-	this->_gameSettings->NumberOfCards += INCREMENTAL_STEP_FOR_CARDS;
-	this->_menuView.UpdateNumberOfCards(this->_gameSettings->NumberOfCards);
-}
-
-void MemoryGame::MenuController::DecreaseNumberOfCards()
-{
-	if (this->_gameSettings->NumberOfCards > MINIMUM_NUMBER_OF_CARDS)
+	if (isIncreased)
 	{
-		this->_gameSettings->NumberOfCards -= INCREMENTAL_STEP_FOR_CARDS;
+		this->_gameSettings->NumberOfCards += INCREMENTAL_STEP_FOR_CARDS;
 		this->_menuView.UpdateNumberOfCards(this->_gameSettings->NumberOfCards);
+	}
+	else
+	{
+		if (this->_gameSettings->NumberOfCards > MINIMUM_NUMBER_OF_CARDS)
+		{
+			this->_gameSettings->NumberOfCards -= INCREMENTAL_STEP_FOR_CARDS;
+			this->_menuView.UpdateNumberOfCards(this->_gameSettings->NumberOfCards);
+		}
 	}
 }
 

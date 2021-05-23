@@ -99,35 +99,40 @@ void MemoryGame::MenuView::InitText(sf::Text* text, std::string textString, sf::
 	text->setFillColor(fillColor);
 }
 
-int MemoryGame::MenuView::GetSelectedButtonType(sf::Vector2f mousePosition)
+void MemoryGame::MenuView::ProcessMouseClick(sf::Vector2f mousePosition)
 {
-	// Temporary Solution
 	if (this->_playersLeftButtonSprite.getGlobalBounds().contains(mousePosition))
 	{
-		return 0;
+		bool isIncreased = false;
+		this->_changeNumberOfPlayersDelegate(isIncreased);
+		return;
 	}
 
 	if (this->_playersRightButtonSprite.getGlobalBounds().contains(mousePosition))
 	{
-		return 1;
+		bool isIncreased = true;
+		this->_changeNumberOfPlayersDelegate(isIncreased);
+		return;
 	}
 
 	if (this->_cardsLeftButtonSprite.getGlobalBounds().contains(mousePosition))
 	{
-		return 2;
+		bool isIncreased = false;
+		this->_changeNumberOfCardsDelegate(isIncreased);
+		return;
 	}
 
 	if (this->_cardsRightButtonSprite.getGlobalBounds().contains(mousePosition))
 	{
-		return 3;
+		bool isIncreased = true;
+		this->_changeNumberOfCardsDelegate(isIncreased);
+		return;
 	}
 
 	if (this->_playText.getGlobalBounds().contains(mousePosition))
 	{
-		return 4;
+		this->_playGameDelegate();
 	}
-
-	return -1;
 }
 
 void MemoryGame::MenuView::Render(std::shared_ptr<sf::RenderWindow> window)
@@ -152,4 +157,19 @@ void MemoryGame::MenuView::UpdateNumberOfPlayers(int numberOfPlayers)
 void MemoryGame::MenuView::UpdateNumberOfCards(int numberOfCards)
 {
 	this->_numberOfCardsText.setString(std::to_string(numberOfCards));
+}
+
+void MemoryGame::MenuView::SetChangeNumberOfPlayersDelegate(std::function<void(bool)> changeNumberOfPlayersDelegate)
+{
+	this->_changeNumberOfPlayersDelegate = changeNumberOfPlayersDelegate;
+}
+
+void MemoryGame::MenuView::SetChangeNumberOfCardsDelegate(std::function<void(bool)> changeNumberOfCardsDelegate)
+{
+	this->_changeNumberOfCardsDelegate = changeNumberOfCardsDelegate;
+}
+
+void MemoryGame::MenuView::SetChangePlayButtonDelegate(std::function<void()> playGameDelegate)
+{
+	this->_playGameDelegate = playGameDelegate;
 }

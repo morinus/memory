@@ -3,6 +3,9 @@
 
 #include "SFML/Graphics.hpp"
 
+#include <functional>
+
+
 namespace MemoryGame
 {
 	class MenuView
@@ -13,9 +16,12 @@ namespace MemoryGame
 
 		void Render(std::shared_ptr<sf::RenderWindow> window);
 
-		int GetSelectedButtonType(sf::Vector2f mousePosition);
+		void ProcessMouseClick(sf::Vector2f mousePosition);
 		void UpdateNumberOfPlayers(int numberOfPlayers);
 		void UpdateNumberOfCards(int numberOfCards);
+		void SetChangeNumberOfPlayersDelegate(std::function<void(bool)> changeNumberOfPlayersDelegate);
+		void SetChangeNumberOfCardsDelegate(std::function<void(bool)> changeNumberOfCardsDelegate);
+		void SetChangePlayButtonDelegate(std::function<void()> playButtonDelegate);
 
 	private:
 		void InitBoardBackground();
@@ -38,6 +44,10 @@ namespace MemoryGame
 		sf::Text _numberOfPlayersText;
 		sf::Text _numberOfCardsText;
 		sf::Text _playText;
+
+		std::function<void(bool)> _changeNumberOfPlayersDelegate;
+		std::function<void(bool)> _changeNumberOfCardsDelegate;
+		std::function<void()> _playGameDelegate;
 	};
 }
 

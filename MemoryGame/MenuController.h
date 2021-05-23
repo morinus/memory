@@ -23,10 +23,8 @@ namespace MemoryGame
 		void SetChangeGameStateDelegate(std::function<void(GameState)> changeGameStateDelegate);
 
 	private:
-		void IncreaseNumberOfPlayers();
-		void DecreaseNumberOfPlayers();
-		void IncreaseNumberOfCards();
-		void DecreaseNumberOfCards();
+		void ChangeNumberOfPlayers(bool isIncreased);
+		void ChangeNumberOfCards(bool isIncreased);
 		void ProcessPlayGameAction();
 
 		MenuView _menuView;
