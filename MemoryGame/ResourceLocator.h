@@ -9,6 +9,7 @@
 #define MONSTER_B_TEXTURE_FILEPATH "../Images/monster-b.jpg"
 #define MONSTER_C_TEXTURE_FILEPATH "../Images/monster-c.jpg"
 #define MONSTER_D_TEXTURE_FILEPATH "../Images/monster-d.jpg"
+#define ARROW_TEXTURE_FILEPATH "../Images/arrow.png"
 #define CARD_BACKGROUND_TEXTURE_FILEPATH "../Images/card-background.jpg"
 #define FONT_FILEPATH "../Fonts/KGBrokenVesselsSketch.ttf"
 
