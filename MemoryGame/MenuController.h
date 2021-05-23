@@ -17,6 +17,12 @@ namespace MemoryGame
 		void ProcessMouseClick(sf::Vector2f mousePosition);
 
 	private:
+		void IncreaseNumberOfPlayers();
+		void DecreaseNumberOfPlayers();
+		void IncreaseNumberOfCards();
+		void DecreaseNumberOfCards();
+		void ProcessPlayGameAction();
+
 		MenuView _menuView;
 
 		int _numberOfPlayers;

@@ -99,6 +99,37 @@ void MemoryGame::MenuView::InitText(sf::Text* text, std::string textString, sf::
 	text->setFillColor(fillColor);
 }
 
+int MemoryGame::MenuView::GetSelectedButtonType(sf::Vector2f mousePosition)
+{
+	// Temporary Solution
+	if (this->_playersLeftButtonSprite.getGlobalBounds().contains(mousePosition))
+	{
+		return 0;
+	}
+
+	if (this->_playersRightButtonSprite.getGlobalBounds().contains(mousePosition))
+	{
+		return 1;
+	}
+
+	if (this->_cardsLeftButtonSprite.getGlobalBounds().contains(mousePosition))
+	{
+		return 2;
+	}
+
+	if (this->_cardsRightButtonSprite.getGlobalBounds().contains(mousePosition))
+	{
+		return 3;
+	}
+
+	if (this->_playText.getGlobalBounds().contains(mousePosition))
+	{
+		return 4;
+	}
+
+	return -1;
+}
+
 void MemoryGame::MenuView::Render(std::shared_ptr<sf::RenderWindow> window)
 {
 	window->draw(this->_backgroundSprite);
@@ -113,7 +144,12 @@ void MemoryGame::MenuView::Render(std::shared_ptr<sf::RenderWindow> window)
 	window->draw(this->_cardsRightButtonSprite);
 }
 
-void MemoryGame::MenuView::Update(float elapsedTime)
+void MemoryGame::MenuView::UpdateNumberOfPlayers(int numberOfPlayers)
 {
-	//
+	this->_numberOfPlayersText.setString(std::to_string(numberOfPlayers));
+}
+
+void MemoryGame::MenuView::UpdateNumberOfCards(int numberOfCards)
+{
+	this->_numberOfCardsText.setString(std::to_string(numberOfCards));
 }

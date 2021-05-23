@@ -12,7 +12,10 @@ namespace MemoryGame
 		~MenuView();
 
 		void Render(std::shared_ptr<sf::RenderWindow> window);
-		void Update(float elapsedTime);
+
+		int GetSelectedButtonType(sf::Vector2f mousePosition);
+		void UpdateNumberOfPlayers(int numberOfPlayers);
+		void UpdateNumberOfCards(int numberOfCards);
 
 	private:
 		void InitBoardBackground();
