@@ -1,7 +1,5 @@
 #include "MenuController.h"
 
-constexpr int INITIAL_NUMBER_OF_PLAYERS = 5;
-constexpr int INITIAL_NUMBER_OF_CARDS = 24;
 constexpr int MINIMUM_NUMBER_OF_PLAYERS = 2;
 constexpr int MINIMUM_NUMBER_OF_CARDS = 2;
 constexpr int INCREMENTAL_STEP_FOR_CARDS = 2;
@@ -18,8 +16,7 @@ enum MenuViewButton
 
 MemoryGame::MenuController::MenuController()
 {
-	this->_numberOfPlayers = INITIAL_NUMBER_OF_PLAYERS;
-	this->_numberOfCards = INITIAL_NUMBER_OF_CARDS;
+
 }
 
 MemoryGame::MenuController::~MenuController()
@@ -27,9 +24,9 @@ MemoryGame::MenuController::~MenuController()
 
 }
 
-void MemoryGame::MenuController::InitMenu()
+void MemoryGame::MenuController::InitMenu(std::shared_ptr<GameSettings> gameSettings)
 {
-
+	this->_gameSettings = gameSettings;
 }
 
 void MemoryGame::MenuController::Render(std::shared_ptr<sf::RenderWindow> window)
@@ -68,31 +65,31 @@ void MemoryGame::MenuController::ProcessMouseClick(sf::Vector2f mousePosition)
 
 void MemoryGame::MenuController::IncreaseNumberOfPlayers()
 {
-	this->_numberOfPlayers++;
-	this->_menuView.UpdateNumberOfPlayers(this->_numberOfPlayers);
+	this->_gameSettings->NumberOfPlayers++;
+	this->_menuView.UpdateNumberOfPlayers(this->_gameSettings->NumberOfPlayers);
 }
 
 void MemoryGame::MenuController::DecreaseNumberOfPlayers()
 {
-	if (this->_numberOfPlayers > MINIMUM_NUMBER_OF_PLAYERS)
+	if (this->_gameSettings->NumberOfPlayers > MINIMUM_NUMBER_OF_PLAYERS)
 	{
-		this->_numberOfPlayers--;
-		this->_menuView.UpdateNumberOfPlayers(this->_numberOfPlayers);
+		this->_gameSettings->NumberOfPlayers--;
+		this->_menuView.UpdateNumberOfPlayers(this->_gameSettings->NumberOfPlayers);
 	}
 }
 
 void MemoryGame::MenuController::IncreaseNumberOfCards()
 {
-	this->_numberOfCards += INCREMENTAL_STEP_FOR_CARDS;
-	this->_menuView.UpdateNumberOfCards(this->_numberOfCards);
+	this->_gameSettings->NumberOfCards += INCREMENTAL_STEP_FOR_CARDS;
+	this->_menuView.UpdateNumberOfCards(this->_gameSettings->NumberOfCards);
 }
 
 void MemoryGame::MenuController::DecreaseNumberOfCards()
 {
-	if (this->_numberOfCards > MINIMUM_NUMBER_OF_CARDS)
+	if (this->_gameSettings->NumberOfCards > MINIMUM_NUMBER_OF_CARDS)
 	{
-		this->_numberOfCards -= INCREMENTAL_STEP_FOR_CARDS;
-		this->_menuView.UpdateNumberOfCards(this->_numberOfCards);
+		this->_gameSettings->NumberOfCards -= INCREMENTAL_STEP_FOR_CARDS;
+		this->_menuView.UpdateNumberOfCards(this->_gameSettings->NumberOfCards);
 	}
 }
 

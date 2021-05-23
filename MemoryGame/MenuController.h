@@ -2,6 +2,8 @@
 #define MENUCONTROLLER_H
 
 #include "MenuView.h"
+#include "GameSettings.h"
+
 
 namespace MemoryGame
 {
@@ -11,7 +13,7 @@ namespace MemoryGame
 		MenuController();
 		~MenuController();
 
-		void InitMenu();
+		void InitMenu(std::shared_ptr<GameSettings> gameSettings);
 		void Render(std::shared_ptr<sf::RenderWindow> window);
 		void Update(float elapsedTime);
 		void ProcessMouseClick(sf::Vector2f mousePosition);
@@ -25,8 +27,7 @@ namespace MemoryGame
 
 		MenuView _menuView;
 
-		int _numberOfPlayers;
-		int _numberOfCards;
+		std::shared_ptr<GameSettings> _gameSettings;
 	};
 }
 

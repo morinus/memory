@@ -3,8 +3,8 @@
 
 #include "BoardController.h"
 #include "GameScene.h"
+#include "GameSettings.h"
 
-class Game;
 
 namespace MemoryGame
 {
@@ -14,7 +14,7 @@ namespace MemoryGame
 		PlayScene();
 		~PlayScene();
 
-		virtual void Init() override;
+		virtual void Init(std::shared_ptr<GameSettings> gameSettings) override;
 		virtual void Update(float elapsedTime) override;
 		virtual void Render(std::shared_ptr<sf::RenderWindow> window) override;
 		virtual void ProcessMouseClick(sf::Vector2f mousePosition) override;

@@ -2,6 +2,7 @@
 #define GAMESCENE_H
 
 #include "SFML/Graphics.hpp"
+#include "GameSettings.h"
 
 
 namespace MemoryGame
@@ -9,7 +10,7 @@ namespace MemoryGame
 	class GameScene
 	{
 	public:
-		virtual void Init() = 0;
+		virtual void Init(std::shared_ptr<GameSettings> gameSettings) = 0;
 		virtual void Update(float elapsedTime) = 0;
 		virtual void Render(std::shared_ptr<sf::RenderWindow> window) = 0;
 		virtual void ProcessMouseClick(sf::Vector2f mousePosition) = 0;

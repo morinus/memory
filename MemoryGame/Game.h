@@ -6,6 +6,7 @@
 #include "BoardController.h"
 #include "SoundController.h"
 
+#include "GameSettings.h"
 
 namespace MemoryGame
 {
@@ -43,5 +44,7 @@ namespace MemoryGame
 		GameState _currentGameState;
 		std::shared_ptr<sf::RenderWindow> _window;
 		sf::Clock _clock;
+
+		std::shared_ptr<GameSettings> _gameSettings;
 	};
 }

@@ -75,6 +75,9 @@
     <ClCompile Include="MenuView.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
+    <ClCompile Include="GameSettings.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoardController.h">
@@ -121,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="MenuView.h">
       <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSettings.h">
+      <Filter>Header Files\Model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

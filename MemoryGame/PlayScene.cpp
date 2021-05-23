@@ -15,7 +15,7 @@ MemoryGame::PlayScene::~PlayScene()
 
 }
 
-void MemoryGame::PlayScene::Init()
+void MemoryGame::PlayScene::Init(std::shared_ptr<GameSettings> gameSettings)
 {
 	this->_boardController.InitBoard(NUMBER_OF_PLAYERS, NUMBER_OF_CARDS);
 }
