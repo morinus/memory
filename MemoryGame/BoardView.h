@@ -14,7 +14,7 @@ namespace MemoryGame
 		BoardView();
 		~BoardView();
 
-		void Init(std::vector<MemoryGame::Card> cards);
+		void Init(std::vector<MemoryGame::Card> cards, int boardWidth, int boardHeight);
 		void DeselectButtons();
 		void SetIsInteractible(int index, bool isInteractible);
 		void Render(std::shared_ptr<sf::RenderWindow> window);
@@ -26,7 +26,7 @@ namespace MemoryGame
 		void InitBoardBackground();
 		void InitCards(std::vector<MemoryGame::Card> cards);
 		void InitTextures();
-		void SetupCardButtons();
+		void SetupCardButtons(int width, int height);
 
 		sf::Texture* GetTextureByCardType(CardType cardType);
 

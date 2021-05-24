@@ -11,6 +11,8 @@ constexpr float STARTING_OFFSET_Y = 100.f;
 constexpr float HORIZONTAL_OFFSET = 125.f;
 constexpr float VERTICAL_OFFSET = 150.f;
 constexpr float CARD_SCALE = 0.35f;
+constexpr int BOARD_HEIGHT = 1000;
+constexpr int BOARD_WIDTH = 1000;
 
 // TEMPORARY
 constexpr int ROWS = 4;
@@ -27,7 +29,7 @@ MemoryGame::BoardView::~BoardView()
 	this->_cardButtons.clear();
 }
 
-void MemoryGame::BoardView::Init(std::vector<MemoryGame::Card> cards)
+void MemoryGame::BoardView::Init(std::vector<MemoryGame::Card> cards, int boardWidth, int boardHeight)
 {
 	try
 	{
@@ -40,7 +42,7 @@ void MemoryGame::BoardView::Init(std::vector<MemoryGame::Card> cards)
 		std::cout << errorMessage << std::endl;
 	}
 
-	this->SetupCardButtons();
+	this->SetupCardButtons(boardWidth, boardHeight);
 }
 
 int MemoryGame::BoardView::GetSelectedButtonIndex(sf::Vector2f mousePosition)
@@ -80,7 +82,6 @@ void MemoryGame::BoardView::SetIsInteractible(int index, bool isInteractible)
 
 			break;
 		}
-
 	}
 }
 
@@ -109,16 +110,39 @@ void MemoryGame::BoardView::InitCards(std::vector<MemoryGame::Card> cards)
 	std::shuffle(this->_cardButtons.begin(), this->_cardButtons.end(), std::default_random_engine(seed));
 }
 
-void MemoryGame::BoardView::SetupCardButtons()
+void MemoryGame::BoardView::SetupCardButtons(int width, int height)
 {
-	// Temporary solution, should be done inside a rectangle dynamically in algorithm pattern
+	int cardWidth = (this->_cardButtons[0]->GetImage().getLocalBounds().width * CARD_SCALE) + HORIZONTAL_OFFSET;
+	int cardHeight = (this->_cardButtons[0]->GetImage().getLocalBounds().height * CARD_SCALE) + VERTICAL_OFFSET;
+	float cardScaledWidth = BOARD_WIDTH / width;
+	float cardScaledHeight = BOARD_HEIGHT / height;
+	float widthFactor = cardScaledWidth / cardWidth;
+	float heightFactor = cardScaledHeight / cardHeight;
+
 	int cardsPlaced = 0;
-	for (int j = 0; j < ROWS; j++)
+	for (int j = 0; j < height; j++)
 	{
-		for (int i = 0; i < COLUMNS; ++i)
+		for (int i = 0; i < width; ++i)
 		{
-			this->_cardButtons[cardsPlaced]->SetPosition(sf::Vector2f(STARTING_OFFSET_X + HORIZONTAL_OFFSET * i, STARTING_OFFSET_Y + (VERTICAL_OFFSET * j)));
-			this->_cardButtons[cardsPlaced]->SetScale(sf::Vector2f(CARD_SCALE, CARD_SCALE));
+			if (widthFactor > 1 && heightFactor > 1)
+			{
+				this->_cardButtons[cardsPlaced]->SetPosition(sf::Vector2f(STARTING_OFFSET_X + HORIZONTAL_OFFSET * i, STARTING_OFFSET_Y + (VERTICAL_OFFSET * j)));
+				this->_cardButtons[cardsPlaced]->SetScale(sf::Vector2f(CARD_SCALE, CARD_SCALE));
+			}
+			else
+			{
+				if (heightFactor < widthFactor)
+				{
+					this->_cardButtons[cardsPlaced]->SetPosition(sf::Vector2f(STARTING_OFFSET_X + HORIZONTAL_OFFSET * heightFactor * i, STARTING_OFFSET_Y + (VERTICAL_OFFSET * heightFactor * j)));
+					this->_cardButtons[cardsPlaced]->SetScale(sf::Vector2f(CARD_SCALE * heightFactor, CARD_SCALE * heightFactor));
+				}
+				else
+				{
+					this->_cardButtons[cardsPlaced]->SetPosition(sf::Vector2f(STARTING_OFFSET_X + HORIZONTAL_OFFSET * widthFactor * i, STARTING_OFFSET_Y + (VERTICAL_OFFSET * widthFactor * j)));
+					this->_cardButtons[cardsPlaced]->SetScale(sf::Vector2f(CARD_SCALE * widthFactor, CARD_SCALE * widthFactor));
+				}
+			}
+
 			cardsPlaced++;
 		}
 	}

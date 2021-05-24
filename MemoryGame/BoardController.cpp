@@ -25,7 +25,7 @@ void MemoryGame::BoardController::InitBoard(int numberOfPlayers, int boardWidth,
 		this->InitCards(boardWidth, boardHeight);
 
 		this->_leaderboardView.Init(this->_players);
-		this->_boardView.Init(this->_cards);
+		this->_boardView.Init(this->_cards, boardWidth, boardHeight);
 	}
 	catch (std::string errorMessage)
 	{
