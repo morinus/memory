@@ -26,6 +26,7 @@ namespace MemoryGame
 		void InitFont();
 		void InitTexts();
 		void InitPlayerTexts(std::vector<Player> players);
+		void SetPlayerTextPositions();
 		void ChangeGameState();
 
 		sf::Font _font;
