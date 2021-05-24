@@ -6,11 +6,12 @@ namespace MemoryGame
 	class GameSettings
 	{
 	public:
-		GameSettings(int numberOfPlayers, int numberOfCards);
+		GameSettings(int numberOfPlayers, int width, int height);
 		~GameSettings();
 
 		int NumberOfPlayers;
-		int NumberOfCards;
+		int Width;
+		int Height;
 	};
 }
 

@@ -17,7 +17,7 @@ namespace MemoryGame
 		BoardController();
 		~BoardController();
 
-		void InitBoard(int numberOfPlayers, int numberOfCards);
+		void InitBoard(int numberOfPlayers, int width, int height);
 		void ProcessMouseClick(sf::Vector2f mousePosition);
 		void ResetGame();
 		void Render(std::shared_ptr<sf::RenderWindow> window);
@@ -26,7 +26,7 @@ namespace MemoryGame
 
 	private:
 		void InitPlayers(int numberOfPlayers);
-		void InitCards(int numberOfCardPairs);
+		void InitCards(int boardWidth, int boardHeight);
 		void ProcessCurrentlySelectedCards();
 		void DeselectEverything();
 		void UpdateCurrentPlayerText();

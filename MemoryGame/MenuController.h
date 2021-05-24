@@ -24,7 +24,8 @@ namespace MemoryGame
 
 	private:
 		void ChangeNumberOfPlayers(bool isIncreased);
-		void ChangeNumberOfCards(bool isIncreased);
+		void ChangeBoardHeight(bool isIncreased);
+		void ChangeBoardWidth(bool isIncreased);
 		void ProcessPlayGameAction();
 
 		MenuView _menuView;

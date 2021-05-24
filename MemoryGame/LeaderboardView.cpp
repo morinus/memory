@@ -80,7 +80,6 @@ void MemoryGame::LeaderboardView::SetPlayerTextPositions()
 	int heightOfNewPlayerText = leaderBoardHeight / totalPlayers;
 	float scaleFactor = heightOfNewPlayerText / playerTextHeight;
 
-
 	for (auto &playerText : this->_playerTexts)
 	{
 		float x = playerText.getPosition().x;

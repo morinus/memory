@@ -18,9 +18,11 @@ namespace MemoryGame
 
 		void ProcessMouseClick(sf::Vector2f mousePosition);
 		void UpdateNumberOfPlayers(int numberOfPlayers);
-		void UpdateNumberOfCards(int numberOfCards);
+		void UpdateHeight(int newHeight);
+		void UpdateWidth(int newWidth);
 		void SetChangeNumberOfPlayersDelegate(std::function<void(bool)> changeNumberOfPlayersDelegate);
-		void SetChangeNumberOfCardsDelegate(std::function<void(bool)> changeNumberOfCardsDelegate);
+		void SetChangeBoardHeightDelegate(std::function<void(bool)> changeBoardHeightDelegate);
+		void SetChangeBoardWidthDelegate(std::function<void(bool)> changeBoardWidthDelegate);
 		void SetChangePlayButtonDelegate(std::function<void()> playButtonDelegate);
 
 	private:
@@ -35,18 +37,25 @@ namespace MemoryGame
 		sf::Sprite _backgroundSprite;
 		sf::Sprite _playersLeftButtonSprite;
 		sf::Sprite _playersRightButtonSprite;
-		sf::Sprite _cardsLeftButtonSprite;
-		sf::Sprite _cardsRightButtonSprite;
+		sf::Sprite _widthLeftButtonSprite;
+		sf::Sprite _widthRightButtonSprite;
+		sf::Sprite _heightLeftButtonSprite;
+		sf::Sprite _heightRightButtonSprite;
 
 		sf::Font _font;
 
 		sf::Text _sceneTitleText;
 		sf::Text _numberOfPlayersText;
-		sf::Text _numberOfCardsText;
+		sf::Text _numberOfPlayersTitleText;
+		sf::Text _widthText;
+		sf::Text _widthTitleText;
+		sf::Text _heightText;
+		sf::Text _heightTitleText;
 		sf::Text _playText;
 
 		std::function<void(bool)> _changeNumberOfPlayersDelegate;
-		std::function<void(bool)> _changeNumberOfCardsDelegate;
+		std::function<void(bool)> _changeBoardWidthDelegate;
+		std::function<void(bool)> _changeBoardHeightDelegate;
 		std::function<void()> _playGameDelegate;
 	};
 }

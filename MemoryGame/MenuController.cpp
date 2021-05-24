@@ -1,14 +1,15 @@
 #include "MenuController.h"
 
 constexpr int MINIMUM_NUMBER_OF_PLAYERS = 2;
-constexpr int MINIMUM_NUMBER_OF_CARDS = 2;
-constexpr int INCREMENTAL_STEP_FOR_CARDS = 2;
+constexpr int MINIMUM_WIDTH = 1;
+constexpr int MINIMUM_HEIGHT = 1;
 
 
 MemoryGame::MenuController::MenuController()
 {
 	this->_menuView.SetChangeNumberOfPlayersDelegate([this](bool isIncreased) { ChangeNumberOfPlayers(isIncreased); });
-	this->_menuView.SetChangeNumberOfCardsDelegate([this](bool isIncreased) { ChangeNumberOfCards(isIncreased); });
+	this->_menuView.SetChangeBoardHeightDelegate([this](bool isIncreased) { ChangeBoardHeight(isIncreased); });
+	this->_menuView.SetChangeBoardWidthDelegate([this](bool isIncreased) { ChangeBoardWidth(isIncreased); });
 	this->_menuView.SetChangePlayButtonDelegate([this]() { ProcessPlayGameAction(); });
 }
 
@@ -59,19 +60,36 @@ void MemoryGame::MenuController::ChangeNumberOfPlayers(bool isIncreased)
 	}
 }
 
-void MemoryGame::MenuController::ChangeNumberOfCards(bool isIncreased)
+void MemoryGame::MenuController::ChangeBoardWidth(bool isIncreased)
 {
 	if (isIncreased)
 	{
-		this->_gameSettings->NumberOfCards += INCREMENTAL_STEP_FOR_CARDS;
-		this->_menuView.UpdateNumberOfCards(this->_gameSettings->NumberOfCards);
+		this->_gameSettings->Width++;
+		this->_menuView.UpdateWidth(this->_gameSettings->Width);
 	}
 	else
 	{
-		if (this->_gameSettings->NumberOfCards > MINIMUM_NUMBER_OF_CARDS)
+		if (this->_gameSettings->Width > MINIMUM_WIDTH)
 		{
-			this->_gameSettings->NumberOfCards -= INCREMENTAL_STEP_FOR_CARDS;
-			this->_menuView.UpdateNumberOfCards(this->_gameSettings->NumberOfCards);
+			this->_gameSettings->Width--;
+			this->_menuView.UpdateWidth(this->_gameSettings->Width);
+		}
+	}
+}
+
+void MemoryGame::MenuController::ChangeBoardHeight(bool isIncreased)
+{
+	if (isIncreased)
+	{
+		this->_gameSettings->Height++;
+		this->_menuView.UpdateHeight(this->_gameSettings->Height);
+	}
+	else
+	{
+		if (this->_gameSettings->Height > MINIMUM_HEIGHT)
+		{
+			this->_gameSettings->Height--;
+			this->_menuView.UpdateHeight(this->_gameSettings->Height);
 		}
 	}
 }

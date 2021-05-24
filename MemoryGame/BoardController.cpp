@@ -17,12 +17,12 @@ MemoryGame::BoardController::~BoardController()
 
 }
 
-void MemoryGame::BoardController::InitBoard(int numberOfPlayers, int numberOfCards)
+void MemoryGame::BoardController::InitBoard(int numberOfPlayers, int boardWidth, int boardHeight)
 {
 	try
 	{
 		this->InitPlayers(numberOfPlayers);
-		this->InitCards(numberOfCards);
+		this->InitCards(boardWidth, boardHeight);
 
 		this->_leaderboardView.Init(this->_players);
 		this->_boardView.Init(this->_cards);
@@ -44,9 +44,9 @@ void MemoryGame::BoardController::InitPlayers(int numberOfPlayers)
 	}
 }
 
-void MemoryGame::BoardController::InitCards(int numberOfCards)
+void MemoryGame::BoardController::InitCards(int width, int height)
 {
-	int numberOfCardPairs = numberOfCards / 2;
+	int numberOfCardPairs = (width * height) / 2;
 
 	for (int i = 0; i < numberOfCardPairs; ++i)
 	{

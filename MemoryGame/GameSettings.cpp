@@ -1,9 +1,10 @@
 #include "GameSettings.h"
 
-MemoryGame::GameSettings::GameSettings(int numberOfPlayers, int numberOfCards)
+MemoryGame::GameSettings::GameSettings(int numberOfPlayers, int width, int height)
 {
 	this->NumberOfPlayers = numberOfPlayers;
-	this->NumberOfCards = numberOfCards;
+	this->Width = width;
+	this->Height = height;
 }
 
 MemoryGame::GameSettings::~GameSettings()
