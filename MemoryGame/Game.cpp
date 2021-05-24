@@ -10,7 +10,8 @@ constexpr auto WINDOW_WIDTH = 1024;
 constexpr auto WINDOW_TITLE = "Memory Game";
 
 constexpr int INITIAL_NUMBER_OF_PLAYERS = 5;
-constexpr int INITIAL_NUMBER_OF_CARDS = 24;
+constexpr int INITIAL_BOARD_WIDTH = 6;
+constexpr int INITIAL_BOARD_HEIGHT = 4;
 
 
 MemoryGame::Game::Game()
@@ -49,7 +50,7 @@ void MemoryGame::Game::InitGame()
 
 	this->_currentScene = &this->_menuScene;
 	this->_soundController.PlayMusic();
-	this->_gameSettings = std::make_shared<GameSettings>(INITIAL_NUMBER_OF_PLAYERS, INITIAL_NUMBER_OF_CARDS);
+	this->_gameSettings = std::make_shared<GameSettings>(INITIAL_NUMBER_OF_PLAYERS, INITIAL_BOARD_WIDTH, INITIAL_BOARD_HEIGHT);
 	this->_currentScene->Init(this->_gameSettings, [this](GameState gameState) { ChangeGameState(gameState); });
 }
 
