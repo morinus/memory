@@ -2,7 +2,7 @@
 #define BOARDCONTROLLER_H
 
 #include "BoardView.h"
-#include "LeaderboardView.h"
+#include "ScoresView.h"
 #include "Player.h"
 #include "GameState.h"
 
@@ -34,7 +34,7 @@ namespace MemoryGame
 		bool CheckIfGameOver();
 
 		BoardView _boardView;
-		LeaderboardView _leaderboardView;
+		ScoresView _scoresView;
 
 		std::vector<MemoryGame::Player> _players;
 		std::vector<MemoryGame::Card> _cards;

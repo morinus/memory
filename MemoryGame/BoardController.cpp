@@ -24,7 +24,7 @@ void MemoryGame::BoardController::InitBoard(int numberOfPlayers, int boardWidth,
 		this->InitPlayers(numberOfPlayers);
 		this->InitCards(boardWidth, boardHeight);
 
-		this->_leaderboardView.Init(this->_players);
+		this->_scoresView.Init(this->_players);
 		this->_boardView.Init(this->_cards, boardWidth, boardHeight);
 	}
 	catch (std::string errorMessage)
@@ -102,7 +102,7 @@ void MemoryGame::BoardController::ProcessCurrentlySelectedCards()
 		this->ChangePlayerTurn();
 		this->_boardView.SetIsInteractible(firstCardIndex, true);
 		this->_boardView.SetIsInteractible(secondCardIndex, true);
-		this->_leaderboardView.ColorCurrentPlayerText(this->_currentPlayerIndex);
+		this->_scoresView.ColorCurrentPlayerText(this->_currentPlayerIndex);
 	}
 
 	this->DeselectEverything();
@@ -120,7 +120,7 @@ void MemoryGame::BoardController::UpdateCurrentPlayerText()
 	auto newScore = this->_players[_currentPlayerIndex].GetScore();
 	auto newPlayerText = playerName + ": " + std::to_string(newScore);
 
-	this->_leaderboardView.UpdatePlayerText(this->_currentPlayerIndex, newPlayerText);
+	this->_scoresView.UpdatePlayerText(this->_currentPlayerIndex, newPlayerText);
 }
 
 void MemoryGame::BoardController::ChangePlayerTurn()
@@ -152,7 +152,7 @@ void MemoryGame::BoardController::ResetGame()
 void MemoryGame::BoardController::Render(std::shared_ptr<sf::RenderWindow> window)
 {
 	this->_boardView.Render(window);
-	this->_leaderboardView.Render(window);
+	this->_scoresView.Render(window);
 
 	if (this->_isGameOver) {}
 }

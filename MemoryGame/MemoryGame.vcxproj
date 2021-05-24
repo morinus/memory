@@ -139,7 +139,9 @@
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameSettings.cpp" />
+    <ClCompile Include="LeaderboardController.cpp" />
     <ClCompile Include="LeaderboardView.cpp" />
+    <ClCompile Include="ScoresView.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuController.cpp" />
     <ClCompile Include="MenuScene.cpp" />
@@ -157,7 +159,10 @@
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GameSettings.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="LeaderboardController.h" />
+    <ClInclude Include="LeaderboardScene.h" />
     <ClInclude Include="LeaderboardView.h" />
+    <ClInclude Include="ScoresView.h" />
     <ClInclude Include="MenuController.h" />
     <ClInclude Include="MenuScene.h" />
     <ClInclude Include="MenuView.h" />
