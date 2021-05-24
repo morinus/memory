@@ -17,7 +17,7 @@ constexpr int PLAY_AGAIN_TEXT_Y = 700;
 
 MemoryGame::LeaderboardView::LeaderboardView()
 {
-
+	this->_isInited = false;
 }
 
 MemoryGame::LeaderboardView::~LeaderboardView()
@@ -29,10 +29,16 @@ void MemoryGame::LeaderboardView::Init(std::vector<Player> players, std::functio
 {
 	try
 	{
-		this->InitBackground();
-		this->InitFont();
-		this->InitTexts();
+		if (!this->_isInited)
+		{
+			this->InitBackground();
+			this->InitFont();
+			this->InitTexts();
+		}
+
+		this->_playerTexts.clear();
 		this->InitPlayerTexts(players);
+		this->_isInited = true;
 	}
 	catch (std::string errorMessage)
 	{

@@ -37,21 +37,38 @@ constexpr int BUTTON_OFFSET_X = 30;
 
 MemoryGame::MenuView::MenuView()
 {
-	try
-	{
-		this->InitBoardBackground();
-		this->InitButtons();
-		this->InitTexts();
-	}
-	catch (std::string errorMessage)
-	{
-		std::cout << errorMessage << std::endl;
-	}
+	this->_isInited = false;
 }
 
 MemoryGame::MenuView::~MenuView()
 {
 
+}
+
+void MemoryGame::MenuView::Init(std::shared_ptr<GameSettings> gameSettings)
+{
+	try
+	{
+		if (!this->_isInited)
+		{
+			this->InitBoardBackground();
+			this->InitButtons();
+			this->InitTexts();
+		}
+		else if (this->_isInited)
+		{
+			this->_heightText.setString(std::to_string(gameSettings->Height));
+			this->_widthText.setString(std::to_string(gameSettings->Width));
+			this->_numberOfPlayersText.setString(std::to_string(gameSettings->NumberOfPlayers));
+		}
+
+	}
+	catch (std::string errorMessage)
+	{
+		std::cout << errorMessage << std::endl;
+	}
+
+	this->_isInited = true;
 }
 
 void MemoryGame::MenuView::InitBoardBackground()

@@ -33,9 +33,15 @@ void MemoryGame::BoardView::Init(std::vector<MemoryGame::Card> cards, int boardW
 {
 	try
 	{
-		this->InitBoardBackground();
-		this->InitTextures();
+		if (!this->_isInited)
+		{
+			this->InitBoardBackground();
+			this->InitTextures();
+		}
+
+		this->_cardButtons.clear();
 		this->InitCards(cards);
+		this->_isInited = true;
 	}
 	catch (std::string errorMessage)
 	{

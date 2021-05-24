@@ -21,6 +21,7 @@ MemoryGame::MenuController::~MenuController()
 void MemoryGame::MenuController::InitMenu(std::shared_ptr<GameSettings> gameSettings)
 {
 	this->_gameSettings = gameSettings;
+	this->_menuView.Init(gameSettings);
 }
 
 void MemoryGame::MenuController::Render(std::shared_ptr<sf::RenderWindow> window)

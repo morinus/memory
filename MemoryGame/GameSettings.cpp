@@ -1,5 +1,6 @@
 #include "GameSettings.h"
 
+
 MemoryGame::GameSettings::GameSettings(int numberOfPlayers, int width, int height)
 {
 	this->NumberOfPlayers = numberOfPlayers;
@@ -10,4 +11,9 @@ MemoryGame::GameSettings::GameSettings(int numberOfPlayers, int width, int heigh
 MemoryGame::GameSettings::~GameSettings()
 {
 
+}
+
+void MemoryGame::GameSettings::Reset()
+{
+	this->Players.clear();
 }

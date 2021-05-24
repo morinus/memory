@@ -28,6 +28,8 @@ namespace MemoryGame
 		sf::Font _font;
 		sf::Text _leaderboardTitleText;
 		std::vector<sf::Text> _playerTexts;
+
+		bool _isInited;
 	};
 }
 

@@ -16,7 +16,7 @@ constexpr int LEADERBOARD_TITLE_TEXT_OFFSET_Y = 25;
 
 MemoryGame::ScoresView::ScoresView()
 {
-
+	this->_isInited = false;
 }
 
 MemoryGame::ScoresView::~ScoresView()
@@ -28,9 +28,14 @@ void MemoryGame::ScoresView::Init(std::vector<Player> players)
 {
 	try
 	{
-		this->InitFont();
+		if (!this->_isInited)
+		{
+			this->InitFont();
+			this->InitLeaderboardTitleText();
+		}
+
+		this->_playerTexts.clear();
 		this->InitPlayerTexts(players);
-		this->InitLeaderboardTitleText();
 	}
 	catch (std::string errorMessage)
 	{
@@ -39,6 +44,7 @@ void MemoryGame::ScoresView::Init(std::vector<Player> players)
 
 	this->SetPlayerTextPositions();
 	this->ColorCurrentPlayerText(0);
+	this->_isInited = true;
 }
 
 void MemoryGame::ScoresView::InitPlayerTexts(std::vector<Player> players)

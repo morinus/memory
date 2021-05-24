@@ -10,6 +10,7 @@ MemoryGame::BoardController::BoardController()
 	this->_secondSelectedCardIndex = -1;
 	this->_currentPlayerIndex = 0;
 	this->_isGameOver = false;
+	this->_isInited = false;
 }
 
 MemoryGame::BoardController::~BoardController()
@@ -20,9 +21,17 @@ MemoryGame::BoardController::~BoardController()
 void MemoryGame::BoardController::InitBoard(std::shared_ptr<GameSettings> gameSettings)
 {
 	this->_gameSettings = gameSettings;
+	this->_isGameOver = false;
 
 	try
 	{
+		if (this->_isInited)
+		{
+			this->_players.clear();
+			this->_cards.clear();
+			this->_currentPlayerIndex = 0;
+		}
+
 		this->InitPlayers(this->_gameSettings->NumberOfPlayers);
 		this->InitCards(this->_gameSettings->Width, this->_gameSettings->Height);
 
@@ -33,6 +42,8 @@ void MemoryGame::BoardController::InitBoard(std::shared_ptr<GameSettings> gameSe
 	{
 		std::cout << errorMessage << std::endl;
 	}
+
+	this->_isInited = true;
 }
 
 void MemoryGame::BoardController::InitPlayers(int numberOfPlayers)

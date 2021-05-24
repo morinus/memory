@@ -40,6 +40,8 @@ namespace MemoryGame
 
 		sf::Texture _backgroundTexture;
 		sf::Sprite _backgroundSprite;
+
+		bool _isInited;
 	};
 }
 

@@ -13,6 +13,8 @@ namespace MemoryGame
 		GameSettings(int numberOfPlayers, int width, int height);
 		~GameSettings();
 
+		void Reset();
+
 		int NumberOfPlayers;
 		int Width;
 		int Height;

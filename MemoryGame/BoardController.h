@@ -47,6 +47,8 @@ namespace MemoryGame
 		bool _isGameOver;
 
 		std::function<void(GameState)> _changeGameStateDelegate;
+
+		bool _isInited;
 	};
 }
 

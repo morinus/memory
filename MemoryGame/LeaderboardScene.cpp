@@ -14,6 +14,7 @@ MemoryGame::LeaderboardScene::~LeaderboardScene()
 void MemoryGame::LeaderboardScene::Init(std::shared_ptr<GameSettings> gameSettings, std::function<void(GameState)> changeGameStateDelegate)
 {
 	this->_leaderboardController.Init(gameSettings->Players, changeGameStateDelegate);
+	gameSettings->Reset();
 }
 
 void MemoryGame::LeaderboardScene::Update(float elapsedTime)

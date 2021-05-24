@@ -38,6 +38,8 @@ namespace MemoryGame
 		std::vector<sf::Text> _playerTexts;
 
 		std::function<void(GameState)> _changeSceneDelegate;
+
+		bool _isInited;
 	};
 }
 

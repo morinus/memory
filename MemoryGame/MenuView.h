@@ -2,6 +2,7 @@
 #define MENUVIEW_H
 
 #include "SFML/Graphics.hpp"
+#include "GameSettings.h"
 
 #include <functional>
 
@@ -16,6 +17,7 @@ namespace MemoryGame
 
 		void Render(std::shared_ptr<sf::RenderWindow> window);
 
+		void Init(std::shared_ptr<GameSettings> gameSettings);
 		void ProcessMouseClick(sf::Vector2f mousePosition);
 		void UpdateNumberOfPlayers(int numberOfPlayers);
 		void UpdateHeight(int newHeight);
@@ -57,6 +59,8 @@ namespace MemoryGame
 		std::function<void(bool)> _changeBoardWidthDelegate;
 		std::function<void(bool)> _changeBoardHeightDelegate;
 		std::function<void()> _playGameDelegate;
+
+		bool _isInited;
 	};
 }
 
