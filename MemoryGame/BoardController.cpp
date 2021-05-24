@@ -17,15 +17,17 @@ MemoryGame::BoardController::~BoardController()
 
 }
 
-void MemoryGame::BoardController::InitBoard(int numberOfPlayers, int boardWidth, int boardHeight)
+void MemoryGame::BoardController::InitBoard(std::shared_ptr<GameSettings> gameSettings)
 {
+	this->_gameSettings = gameSettings;
+
 	try
 	{
-		this->InitPlayers(numberOfPlayers);
-		this->InitCards(boardWidth, boardHeight);
+		this->InitPlayers(this->_gameSettings->NumberOfPlayers);
+		this->InitCards(this->_gameSettings->Width, this->_gameSettings->Height);
 
 		this->_scoresView.Init(this->_players);
-		this->_boardView.Init(this->_cards, boardWidth, boardHeight);
+		this->_boardView.Init(this->_cards, this->_gameSettings->Width, this->_gameSettings->Height);
 	}
 	catch (std::string errorMessage)
 	{
@@ -72,7 +74,6 @@ void MemoryGame::BoardController::ProcessMouseClick(sf::Vector2f mousePosition)
 			_secondSelectedCardIndex = selectedCardIndex;
 
 			this->ProcessCurrentlySelectedCards();
-			this->CheckIfGameOver();
 		}
 		else
 		{
@@ -95,7 +96,12 @@ void MemoryGame::BoardController::ProcessCurrentlySelectedCards()
 		this->UpdateCurrentPlayerText();
 		this->_cards[firstCardIndex].Solve();
 		this->_cards[secondCardIndex].Solve();
-		this->_isGameOver = this->CheckIfGameOver();
+
+		if (this->CheckIfGameOver())
+		{
+			this->_gameSettings->Players = this->_players;
+			this->_changeGameStateDelegate(GameState::LEADERBOARD_SCENE);
+		}
 	}
 	else
 	{
@@ -153,8 +159,6 @@ void MemoryGame::BoardController::Render(std::shared_ptr<sf::RenderWindow> windo
 {
 	this->_boardView.Render(window);
 	this->_scoresView.Render(window);
-
-	if (this->_isGameOver) {}
 }
 
 void MemoryGame::BoardController::Update(float elapsedTime)

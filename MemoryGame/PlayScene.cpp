@@ -14,7 +14,8 @@ MemoryGame::PlayScene::~PlayScene()
 
 void MemoryGame::PlayScene::Init(std::shared_ptr<GameSettings> gameSettings, std::function<void(GameState)> changeGameStateDelegate)
 {
-	this->_boardController.InitBoard(gameSettings->NumberOfPlayers, gameSettings->Width, gameSettings->Height);
+	this->_boardController.InitBoard(gameSettings);
+	this->_boardController.SetChangeGameStateDelegate(changeGameStateDelegate);
 }
 
 void MemoryGame::PlayScene::Update(float elapsedTime)

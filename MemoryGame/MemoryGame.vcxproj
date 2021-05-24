@@ -140,6 +140,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameSettings.cpp" />
     <ClCompile Include="LeaderboardController.cpp" />
+    <ClCompile Include="LeaderboardScene.cpp" />
     <ClCompile Include="LeaderboardView.cpp" />
     <ClCompile Include="ScoresView.cpp" />
     <ClCompile Include="main.cpp" />

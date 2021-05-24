@@ -3,6 +3,7 @@
 
 #include "SFML/Graphics.hpp"
 
+#include "LeaderboardScene.h"
 #include "MenuScene.h"
 #include "PlayScene.h"
 
@@ -35,8 +36,9 @@ namespace MemoryGame
 		MemoryGame::SoundController _soundController;
 
 		GameScene* _currentScene;
-		PlayScene _playScene;
+		LeaderboardScene _leaderboardScene;
 		MenuScene _menuScene;
+		PlayScene _playScene;
 
 		GameState _currentGameState;
 		std::shared_ptr<sf::RenderWindow> _window;

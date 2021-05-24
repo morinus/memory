@@ -1,7 +1,7 @@
 #ifndef LEADERBOARDSCENE_H
 #define LEADERBOARDSCENE_H
 
-#include "MenuController.h"
+#include "LeaderboardController.h"
 #include "GameScene.h"
 
 class Game;

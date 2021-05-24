@@ -1,6 +1,10 @@
 #ifndef GAMESETTINGS_H
 #define GAMESETTINGS_H
 
+#include "Player.h"
+#include <vector>
+
+
 namespace MemoryGame
 {
 	class GameSettings
@@ -12,6 +16,8 @@ namespace MemoryGame
 		int NumberOfPlayers;
 		int Width;
 		int Height;
+
+		std::vector<Player> Players;
 	};
 }
 

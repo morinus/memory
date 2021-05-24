@@ -5,6 +5,7 @@
 #include "ScoresView.h"
 #include "Player.h"
 #include "GameState.h"
+#include "GameSettings.h"
 
 #include <functional>
 
@@ -17,7 +18,7 @@ namespace MemoryGame
 		BoardController();
 		~BoardController();
 
-		void InitBoard(int numberOfPlayers, int width, int height);
+		void InitBoard(std::shared_ptr<GameSettings> gameSettings);
 		void ProcessMouseClick(sf::Vector2f mousePosition);
 		void ResetGame();
 		void Render(std::shared_ptr<sf::RenderWindow> window);
@@ -36,6 +37,7 @@ namespace MemoryGame
 		BoardView _boardView;
 		ScoresView _scoresView;
 
+		std::shared_ptr<GameSettings> _gameSettings;
 		std::vector<MemoryGame::Player> _players;
 		std::vector<MemoryGame::Card> _cards;
 

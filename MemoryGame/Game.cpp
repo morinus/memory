@@ -75,6 +75,9 @@ void MemoryGame::Game::ChangeGameState(GameState newGameState)
 		this->_playScene.Init(this->_gameSettings, [this](GameState gameState) { ChangeGameState(gameState); });
 		this->_currentScene = &this->_playScene;
 		break;
+	case GameState::LEADERBOARD_SCENE:
+		this->_leaderboardScene.Init(this->_gameSettings, [this](GameState gameState) { ChangeGameState(gameState); });
+		this->_currentScene = &this->_leaderboardScene;
 	}
 }
 
