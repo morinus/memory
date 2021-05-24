@@ -94,7 +94,22 @@ void MemoryGame::MenuController::ChangeBoardHeight(bool isIncreased)
 	}
 }
 
+bool MemoryGame::MenuController::ValidateBoardSize()
+{
+	int boardWidth = this->_gameSettings->Width;
+	int boardHeight = this->_gameSettings->Height;
+	bool isValid = (boardHeight * boardWidth) % 2 == 0;
+
+	return isValid;
+}
+
 void MemoryGame::MenuController::ProcessPlayGameAction()
 {
-	this->_changeGameStateDelegate(GameState::PLAY_SCENE);
+	bool boardIsValid = this->ValidateBoardSize();
+
+	if (boardIsValid)
+	{
+		this->_changeGameStateDelegate(GameState::PLAY_SCENE);
+	}
+
 }

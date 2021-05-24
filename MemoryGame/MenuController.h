@@ -27,6 +27,7 @@ namespace MemoryGame
 		void ChangeBoardHeight(bool isIncreased);
 		void ChangeBoardWidth(bool isIncreased);
 		void ProcessPlayGameAction();
+		bool ValidateBoardSize();
 
 		MenuView _menuView;
 
